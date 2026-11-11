@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Agent Factory · Bug Epic #64 · Tokens, Cost &amp; Waste</title>
+<style>
+:root{
+  --fg:var(--foreground,#e6e8ee);--mut:var(--muted-foreground,#8b93a7);--cd:var(--card,#161a23);
+  --bd:var(--border,#2a3040);--c1:var(--chart-1,#60a5fa);--c2:var(--chart-2,#34d399);--c3:var(--chart-3,#fbbf24);
+  --c4:var(--chart-4,#f472b6);--c5:var(--chart-5,#a78bfa);--bad:var(--destructive,#f87171);--ok:var(--success,#4ade80);
+  --warn:var(--warning,#f59e0b);--r:var(--radius,10px);--mono:var(--font-mono,ui-monospace,Menlo,Consolas,monospace);
+  --opus:#a78bfa;--sonnet:#60a5fa;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--fg);font-family:var(--font-sans,system-ui,Segoe UI,sans-serif);font-size:13px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-size:20px;margin:0 0 2px}
+h2{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin:0 0 10px;font-weight:600}
+.sub{color:var(--mut);font-size:12px}
+.box{background:var(--cd);border:1px solid var(--bd);border-radius:var(--r);padding:16px;margin-top:12px}
+.grid{display:grid;gap:10px}
+.k4{grid-template-columns:repeat(4,1fr)}
+.two{grid-template-columns:1fr 1fr}
+.three{grid-template-columns:repeat(3,1fr)}
+@media (max-width:640px){.k4,.three{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
+.kpi{background:var(--cd);border:1px solid var(--bd);border-radius:var(--r);padding:12px;position:relative;overflow:hidden}
+.kpi b{display:block;font-size:22px;font-variant-numeric:tabular-nums;margin:2px 0}
+.kpi span{color:var(--mut);font-size:11px}
+.kpi i{position:absolute;left:0;top:0;bottom:0;width:3px}
+.hero{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;text-align:center}
+.hero .big{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}
+.hero .op{font-size:22px;color:var(--mut)}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--ok);border:1px solid var(--bd);border-radius:99px;padding:2px 9px}
+.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);animation:p 1.6s infinite}
+@keyframes p{50%{opacity:.25}}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+label{font-size:11px;color:var(--mut)}
+input[type=range]{width:180px;accent-color:var(--c4);vertical-align:middle}
+.seg{display:inline-flex;border:1px solid var(--bd);border-radius:99px;overflow:hidden}
+.seg button{background:none;border:0;color:var(--mut);font:inherit;font-size:11px;padding:3px 10px;cursor:pointer}
+.seg button.on{background:var(--c4);color:#0b0d12;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:12px}
+td,th{padding:5px 6px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:500;font-size:11px}
+.num{text-align:right;font-family:var(--mono);white-space:nowrap}
+.pill{font-size:10px;padding:1px 7px;border-radius:99px;border:1px solid var(--bd);color:var(--mut);white-space:nowrap}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--mut);margin-top:8px}
+.legend span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;background:var(--c);vertical-align:-1px}
+svg text{fill:var(--mut);font-size:10px;font-family:var(--font-sans,system-ui)}
+.note{font-size:11px;color:var(--mut);margin-top:8px;line-height:1.45}
+.stack{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:6px 0}
+.stack div{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#0b0d12;white-space:nowrap;overflow:hidden}
+.callout{border-left:3px solid var(--c);padding:8px 10px;margin:8px 0;background:color-mix(in srgb,var(--c) 9%,transparent);border-radius:0 6px 6px 0;font-size:12px;line-height:1.45}
+.sev{font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;color:#0b0d12}
+.mini{height:6px;border-radius:3px;background:var(--c)}
+a{color:var(--c1)}
+code{font-family:var(--mono);font-size:11px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="row">
+  <div>
+    <h1>Agent Factory · Bug Epic #64 — Tokens, Cost &amp; Waste</h1>
+    <div class="sub">21 bugs → 9 PR groups · run log <a href="https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/96">PR #96</a> · telemetry from <code>.agent-metrics/token-usage.jsonl</code> on the group branches · times CST</div>
+  </div>
+  <span class="live" id="live"></span>
+</div>
+
+<!-- HERO: total cost equation -->
+<div class="box">
+  <div class="row" style="margin-bottom:10px">
+    <h2 style="margin:0">Total cost of the run = agent tokens + human time</h2>
+    <div class="row" style="gap:14px">
+      <label>Rate <b id="rateLbl" style="color:var(--fg)"></b> <input type="range" id="rate" min="100" max="400" step="10" value="220"></label>
+      <div class="seg" id="hrsMode"><button data-m="wall" class="on">Wall-clock hours</button><button data-m="active">Exclude host sleep</button></div>
+    </div>
+  </div>
+  <div class="hero">
+    <div><div class="sub">Human cost (pipeline run hours × rate)</div><div class="big" id="hHuman" style="color:var(--c4)"></div><div class="sub" id="hHumanSub"></div></div>
+    <div class="op">+</div>
+    <div><div class="sub">Agent token cost (measured)</div><div class="big" id="hTok" style="color:var(--c1)"></div><div class="sub" id="hTokSub"></div></div>
+    <div class="op">=</div>
+    <div><div class="sub">Total cost incurred</div><div class="big" id="hTotal"></div><div class="sub" id="hTotalSub"></div></div>
+  </div>
+  <div class="stack" id="heroStack" style="height:26px;margin-top:14px"></div>
+  <div class="note" id="heroNote"></div>
+</div>
+
+<div class="grid k4" style="margin-top:12px" id="kpis"></div>
+
+<!-- TOKENS -->
+<div class="grid two">
+  <div class="box">
+    <h2>Where the tokens go</h2>
+    <div class="stack" id="tokStack" style="height:28px"></div>
+    <table id="tokTable"></table>
+    <div class="note">Prompt caching makes 87% of all tokens cheap cache reads. Output tokens are under 1% of volume.</div>
+  </div>
+  <div class="box">
+    <h2>Model &amp; CLI split</h2>
+    <table id="modelTable"></table>
+    <div class="note">Opus (orchestrator, implementer, PR-check critics/judge) is 39% of runs but 61% of spend. Sonnet does planning, test automation and verification.</div>
+  </div>
+</div>
+
+<!-- BURN -->
+<div class="box">
+  <h2>Cumulative spend by model &amp; tokens over the run</h2>
+  <svg id="burn" viewBox="0 0 700 240" width="100%"></svg>
+  <div class="legend">
+    <span style="--c:var(--opus)">Opus $ (stacked)</span><span style="--c:var(--sonnet)">Sonnet $</span><span style="--c:var(--c3)">tokens (M, right axis)</span>
+    <span style="--c:color-mix(in srgb,var(--mut) 35%,transparent)">host asleep</span><span style="--c:color-mix(in srgb,var(--bad) 40%,transparent)">Copilot quota out → Claude Code</span>
+  </div>
+</div>
+
+<!-- WASTE -->
+<div class="box">
+  <div class="row"><h2 style="margin:0">Waste from model hand-offs &amp; rework</h2><span class="pill">tokens · cost · time thrown away</span></div>
+  <div class="grid k4" style="margin-top:12px" id="wasteKpis"></div>
+  <div style="margin-top:12px"><svg id="waterfall" viewBox="0 0 700 200" width="100%"></svg></div>
+  <table id="wasteTable" style="margin-top:6px"></table>
+  <div class="callout" style="--c:var(--c4)" id="engCallout"></div>
+  <div class="callout" style="--c:var(--c5)" id="tierCallout"></div>
+  <h2 style="margin-top:14px">Escalated to the higher tier: what Opus PR-check caught after Sonnet gates passed</h2>
+  <table id="escTable"></table>
+  <div class="note" id="escNote"></div>
+</div>
+
+<!-- TICKETS -->
+<div class="box">
+  <h2>Per-ticket tokens, cost &amp; rework</h2>
+  <table id="ticketTable"></table>
+  <div class="note">Rejections = verifier rounds that did not pass (QE plan, QE automation, pair code/UI verifier). "Copilot+Claude" tickets were interrupted by the quota outage and finished on Claude Code.</div>
+</div>
+
+<!-- HEAL -->
+<div class="box">
+  <h2>Cost per successful heal</h2>
+  <div class="grid k4" id="heal"></div>
+  <div class="note">A "heal" = a ticket the pipeline reported as failed that was later verified without human help. BUG-11 and BUG-18 failed during the Copilot quota outage and were verified on Claude Code; numbers are the measured cost of the run that succeeded.</div>
+</div>
+
+<div class="note" style="margin:12px 0 4px" id="foot"></div>
+</div>
+
+<script>
+const D={"all":{"runs":184,"tokens":58261637,"cost":46.3801,"sec":18453},"premium":688,"breakdown":{"input":143025,"output":577803,"cache_read":50552435,"cache_write_5m":4615934,"cache_write_1h":2372440},"byModel":{"opus":{"runs":71,"tokens":29437687,"cost":28.4624,"sec":7714},"sonnet":{"runs":113,"tokens":28823950,"cost":17.9177,"sec":10739}},"byCli":{"copilot":{"runs":118,"tokens":38830499,"cost":27.0113,"sec":11900},"claude":{"runs":66,"tokens":19431138,"cost":19.3689,"sec":6553}},"byStage":{"implement":{"runs":41,"tokens":19041506,"cost":15.221,"sec":6342},"implement-pair":{"runs":3,"tokens":1931888,"cost":0.639,"sec":266},"implement-verify":{"runs":3,"tokens":501984,"cost":0.2868,"sec":55},"review":{"runs":12,"tokens":1634840,"cost":1.3566,"sec":179},"plan":{"runs":16,"tokens":4356094,"cost":3.2914,"sec":855},"plan-verify":{"runs":16,"tokens":865593,"cost":1.6985,"sec":236},"automation":{"runs":21,"tokens":13064133,"cost":5.2601,"sec":6680},"automation-verify":{"runs":17,"tokens":1634333,"cost":2.1327,"sec":1374},"pr-check":{"runs":55,"tokens":15231266,"cost":16.4939,"sec":2466}},"waste":[{"name":"Sonnet output rejected \u2192 redone","desc":"Sonnet producers (QE plan, QE automation, pair-implementer) failed the verifier gate; the rework rounds and their re-verification.","runs":25,"tokens":5884050,"cost":3.1343,"sec":2902,"opus":0,"sonnet":3.1343},{"name":"Opus output rejected \u2192 redone","desc":"Opus implementer failed the Sonnet code verifier (30 build diagnostics on BUG-17/18/20); second implementer round.","runs":6,"tokens":3325437,"cost":2.0506,"sec":851,"opus":2.0506,"sonnet":0},{"name":"Copilot \u2192 Claude switch redo","desc":"Work done on Copilot before the quota outage that had to be repeated on Claude Code.","runs":8,"tokens":4201566,"cost":1.9724,"sec":1101,"opus":0.7381,"sonnet":1.2342},{"name":"Failed / timed-out runs","desc":"Agent calls that returned nothing (outage answers, a planner killed at its 33 min timeout across host sleep).","runs":1,"tokens":0,"cost":0,"sec":1971,"opus":0,"sonnet":0},{"name":"Pipeline restart re-runs (D6)","desc":"Resumed tickets restarted from scratch and re-ran opus plan + implement.","runs":4,"tokens":1620269,"cost":1.296,"sec":428,"opus":1.296,"sonnet":0}],"tickets":[{"k":"BUG-4","runs":34,"tokens":13090567,"cost":9.6051,"sec":1905,"rej":2,"opus":5.95,"sonnet":3.66,"cli":"claude+copilot"},{"k":"BUG-5","runs":26,"tokens":7180778,"cost":5.6667,"sec":2321,"rej":2,"opus":3.75,"sonnet":1.92,"cli":"copilot"},{"k":"BUG-6","runs":21,"tokens":7064678,"cost":4.8151,"sec":1778,"rej":0,"opus":3.12,"sonnet":1.7,"cli":"copilot"},{"k":"BUG-11","runs":22,"tokens":5802863,"cost":6.6104,"sec":1263,"rej":1,"opus":4.6,"sonnet":2.01,"cli":"claude+copilot"},{"k":"BUG-12","runs":8,"tokens":3162617,"cost":2.2571,"sec":1674,"rej":0,"opus":1.11,"sonnet":1.15,"cli":"claude"},{"k":"BUG-13","runs":15,"tokens":3787081,"cost":2.3877,"sec":3038,"rej":2,"opus":0.77,"sonnet":1.62,"cli":"claude+copilot"},{"k":"BUG-17","runs":21,"tokens":5890268,"cost":5.4522,"sec":2409,"rej":2,"opus":3.9,"sonnet":1.55,"cli":"claude+copilot"},{"k":"BUG-18","runs":11,"tokens":3763853,"cost":3.1108,"sec":1360,"rej":3,"opus":2.21,"sonnet":0.9,"cli":"claude+copilot"},{"k":"BUG-19","runs":11,"tokens":3809042,"cost":2.516,"sec":1199,"rej":1,"opus":0.93,"sonnet":1.59,"cli":"claude+copilot"},{"k":"BUG-20","runs":8,"tokens":2472517,"cost":2.1028,"sec":684,"rej":1,"opus":1.27,"sonnet":0.83,"cli":"claude"},{"k":"BUG-21","runs":7,"tokens":2237373,"cost":1.8564,"sec":822,"rej":0,"opus":0.88,"sonnet":0.98,"cli":"claude"}],"series":[["04:20",0.34,0,0.42],["04:22",0.61,0,0.77],["04:23",1.04,0,1.51],["04:30",1.43,0,1.86],["04:30",1.86,0,2.36],["04:32",1.86,0.23,2.85],["04:32",2.16,0.23,3.24],["04:33",2.16,0.31,3.38],["04:36",2.16,0.61,4.51],["04:37",2.16,0.73,4.75],["04:37",2.16,0.84,5.06],["04:39",2.16,0.93,5.19],["04:42",2.5,0.93,5.73],["04:44",3.41,0.93,7.56],["04:44",3.41,1.11,7.82],["04:46",3.41,1.18,7.87],["04:46",3.41,1.47,8.15],["04:46",3.41,1.56,8.2],["04:47",3.41,1.67,8.39],["04:47",3.41,1.76,8.44],["04:47",3.41,2.02,8.76],["04:47",3.41,2.1,8.81],["04:53",3.41,2.53,10.25],["04:55",3.41,2.81,10.67],["04:56",3.41,2.92,10.73],["04:57",3.41,3.01,10.78],["04:57",3.41,3.14,11.01],["04:57",3.8,3.14,11.38],["04:57",4.28,3.14,11.88],["04:58",5.25,3.14,12.55],["04:58",5.25,3.24,12.73],["04:58",5.25,3.32,12.81],["04:58",5.4,3.32,12.9],["04:59",5.4,3.4,12.99],["04:59",5.4,3.47,13.07],["05:00",5.72,3.47,13.38],["05:01",5.72,3.62,13.73],["05:20",6.1,3.62,14.06],["05:20",6.1,3.86,14.52],["05:20",7.01,3.86,15.06],["05:21",8.05,3.86,15.91],["05:21",8.05,3.98,16.18],["05:22",8.05,4.07,16.39],["05:22",8.05,4.16,16.6],["05:23",8.39,4.16,16.95],["05:24",8.68,4.16,17.38],["05:25",8.99,4.16,17.75],["05:27",9.31,4.16,18.24],["05:28",9.31,4.25,18.38],["05:29",9.31,4.43,18.68],["05:29",9.31,4.5,18.72],["05:32",9.31,4.69,19.2],["05:35",9.31,4.82,19.58],["05:38",9.31,5.06,20.5],["05:39",9.31,5.15,20.59],["05:39",9.67,5.15,21.01],["05:40",9.67,5.27,21.24],["05:40",9.96,5.27,21.52],["05:41",10.46,5.27,22.21],["05:41",10.46,5.38,22.39],["05:41",10.62,5.38,22.56],["05:51",10.62,5.7,22.74],["05:51",10.62,5.77,22.82],["05:52",10.62,5.86,22.99],["05:52",11.04,5.86,23.28],["05:54",11.3,5.86,23.56],["05:54",11.3,5.93,23.61],["06:04",11.3,6.26,24.3],["06:07",11.3,6.35,24.35],["06:07",11.49,6.35,24.52],["06:07",11.49,6.48,24.84],["06:07",11.88,6.48,25.16],["06:08",12.35,6.48,25.59],["06:08",12.35,6.6,25.85],["06:08",12.35,6.69,26.06],["06:08",12.52,6.69,26.23],["06:09",12.52,6.77,26.4],["06:09",12.52,6.85,26.56],["06:09",12.81,6.85,26.83],["06:11",13.12,6.85,27.19],["06:15",13.53,6.85,27.87],["06:19",13.86,6.85,28.39],["06:21",13.86,6.94,28.53],["06:22",13.86,7.12,28.86],["06:22",13.86,7.2,28.91],["06:23",13.86,7.4,29.42],["06:24",13.86,7.51,29.78],["06:24",13.86,7.61,29.92],["06:31",13.86,7.79,30.39],["06:50",13.86,7.79,30.39],["06:51",13.86,7.86,30.44],["08:20",13.86,7.86,30.44],["08:27",14.2,7.86,30.88],["08:29",14.63,7.86,31.62],["08:31",14.63,7.94,31.76],["08:32",14.63,8.08,31.95],["08:32",14.63,8.16,32.0],["08:33",14.63,8.28,32.14],["08:33",14.63,8.37,32.19],["08:34",14.63,8.47,32.33],["08:34",14.63,8.56,32.39],["08:37",14.63,8.85,33.19],["08:38",14.63,8.97,33.59],["08:38",14.63,9.09,33.8],["08:39",15.09,9.09,34.23],["08:42",15.55,9.09,35.03],["08:43",15.55,9.17,35.17],["08:45",15.55,9.54,35.67],["08:45",15.55,9.63,35.72],["08:46",15.55,9.76,35.95],["08:46",15.55,9.85,36.01],["08:53",15.55,10.15,36.93],["08:54",15.55,10.25,36.98],["08:55",15.95,10.25,37.39],["08:56",16.29,10.25,37.9],["09:00",16.76,10.25,38.83],["09:07",16.76,10.25,38.83],["09:08",16.76,10.25,38.83],["09:32",17.04,10.25,38.95],["09:33",17.48,10.25,39.31],["09:37",17.81,10.25,39.56],["09:38",18.52,10.25,40.44],["09:39",18.52,10.41,40.54],["09:39",18.52,10.54,40.7],["09:40",18.52,10.73,40.87],["09:40",18.52,10.85,40.92],["09:40",18.52,11.11,41.15],["09:41",18.52,11.27,41.2],["09:41",18.52,11.51,41.56],["09:42",18.52,11.67,41.61],["09:46",18.52,12.07,42.09],["09:48",18.91,12.07,42.35],["09:49",19.45,12.07,42.89],["09:52",19.45,12.41,43.72],["09:56",19.45,12.56,43.77],["09:57",19.74,12.56,43.93],["09:57",19.74,12.68,44.01],["09:58",20.03,12.68,44.17],["10:01",20.44,12.68,44.68],["10:01",20.87,12.68,45.19],["10:06",21.44,12.68,46.09],["10:08",21.44,12.82,46.24],["10:09",21.44,13.04,46.53],["10:09",21.44,13.17,46.69],["10:09",21.44,13.31,46.8],["10:10",21.44,13.58,47.23],["10:10",21.44,13.72,47.29],["10:13",21.44,13.93,47.59],["10:16",21.44,14.05,47.64],["10:17",21.73,14.05,47.8],["10:19",22.12,14.05,48.11],["10:21",22.7,14.05,48.78],["10:21",22.7,14.18,48.94],["10:22",22.7,14.4,49.18],["10:22",22.7,14.55,49.24],["10:30",22.7,15.0,50.65],["10:31",22.7,15.31,51.43],["10:32",22.7,15.48,51.55],["10:33",23.06,15.48,51.83],["10:33",23.06,15.68,52.13],["10:33",23.62,15.68,52.65],["10:33",24.27,15.68,53.25],["10:34",24.27,15.85,53.42],["10:34",24.63,15.85,53.71],["10:34",24.87,15.85,53.76],["10:34",24.87,16.0,53.88],["10:34",25.13,16.0,53.93],["10:35",25.13,16.13,53.99],["10:35",25.61,16.13,54.42],["10:37",25.61,16.37,54.85],["10:37",26.24,16.37,55.33],["10:37",26.85,16.37,55.74],["10:38",27.32,16.37,56.0],["10:38",27.32,16.52,56.07],["10:39",27.67,16.52,56.19],["10:39",27.96,16.52,56.25],["10:39",27.96,16.67,56.31],["10:40",28.46,16.67,56.71],["10:52",28.46,16.85,56.99],["10:52",28.46,17.07,57.13],["10:59",28.46,17.28,57.61],["11:00",28.46,17.49,57.76],["11:02",28.46,17.69,58.11],["11:03",28.46,17.92,58.26]],"prc":{"rounds":6,"raised":41,"upheld":30,"sev":{"minor":26,"blocking":2,"major":2},"serious":[{"t":"BUG-17+5","sev":"blocking","lens":"acceptance","title":"BUG-13 catalog-admin test is still test.fixme"},{"t":"BUG-6","sev":"blocking","lens":"acceptance","title":"test.fixme not removed from basket-api.spec.ts"},{"t":"BUG-6","sev":"major","lens":"flow","title":"test.fixme in basket-api.spec.ts not removed"},{"t":"BUG-6","sev":"major","lens":"style","title":"Old fixme test left in basket-api.spec.ts, duplicating the new spec"}]},"first":"04:20","last":"11:03","heal":{"BUG-11":{"claude":{"runs":20,"tokens":5802863,"cost":6.6104,"sec":1252},"copilot":{"runs":2,"tokens":0,"cost":0,"sec":11}},"BUG-18":{"claude":{"runs":8,"tokens":1917902,"cost":1.9013,"sec":1152},"copilot":{"runs":3,"tokens":1845951,"cost":1.2095,"sec":208}}}};
+const $=id=>document.getElementById(id);
+const usd=(v,d=2)=>'$'+v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const M=v=>(v/1e6).toFixed(v>=1e7?1:2)+'M';
+const hm=s=>{const h=Math.floor(s/3600),m=Math.round(s%3600/60);return h?`${h}h ${m}m`:`${m}m`};
+const T=s=>{const[h,m]=s.split(':').map(Number);return h*60+m};
+const A=D.all, RUN_START='04:17', NOW=D.last, SLEEP=T('08:26')-T('06:50');
+const VERIFIED=13, VERIFIED_MEASURED=D.tickets.length;
+$('live').textContent=`Run 7 live · telemetry to ${NOW}`;
+
+// HERO
+let mode='wall';
+function hero(){
+  const rate=+$('rate').value; $('rateLbl').textContent=usd(rate,0)+'/h';
+  const wallMin=T(NOW)-T(RUN_START), min=mode==='wall'?wallMin:wallMin-SLEEP, hrs=min/60;
+  const human=hrs*rate, tok=A.cost, total=human+tok;
+  $('hHuman').textContent=usd(human,0);
+  $('hHumanSub').textContent=`${hrs.toFixed(2)} h (${RUN_START}→${NOW}${mode==='wall'?'':', minus 1h 36m sleep'}) × ${usd(rate,0)}`;
+  $('hTok').textContent=usd(tok);
+  $('hTokSub').textContent=`${M(A.tokens)} tokens · ${A.runs} runs`;
+  $('hTotal').textContent=usd(total,0);
+  $('hTotalSub').textContent=`${usd(total/VERIFIED_MEASURED)} per verified ticket`;
+  const hp=human/total*100;
+  $('heroStack').innerHTML=`<div style="width:${hp}%;background:var(--c4)">Human ${hp.toFixed(1)}%</div><div style="width:${100-hp}%;background:var(--c1)">${(100-hp).toFixed(1)}%</div>`;
+  $('heroNote').innerHTML=`Human time is <b>${(human/tok).toFixed(0)}×</b> the token bill. One run-hour of a person (${usd(rate,0)}) buys <b>${M(A.tokens/A.cost*rate)}</b> tokens at this run's blended rate (${usd(A.cost/A.tokens*1e6)} per 1M tokens). Agents did <b>${hm(A.sec)}</b> of compute in that window.`;
+  updEng();
+}
+function updEng(){const r=+$('rate').value;document.querySelectorAll('[data-eng]').forEach(e=>e.textContent=usd(+e.dataset.eng/3600*r+(+e.dataset.add||0),0));const x=$('engRatio');if(x)x.textContent=((+x.dataset.s/3600*r)/(+x.dataset.c)).toFixed(0)+'×';}
+$('rate').addEventListener('input',hero);
+$('hrsMode').querySelectorAll('button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$('hrsMode').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));hero()});
+hero();
+
+// KPIs
+const wTot=D.waste.reduce((a,w)=>({tokens:a.tokens+w.tokens,cost:a.cost+w.cost,sec:a.sec+w.sec,runs:a.runs+w.runs}),{tokens:0,cost:0,sec:0,runs:0});
+const k=[
+ ['Total tokens',M(A.tokens),`${A.runs} agent runs · ${D.premium} premium requests`,'--c3'],
+ ['Total token cost',usd(A.cost),`logged cost_usd · ${usd(A.cost/A.runs,3)} per run`,'--c1'],
+ ['Tokens per verified ticket',M(A.tokens/VERIFIED_MEASURED),`${usd(A.cost/VERIFIED_MEASURED)} per ticket (${VERIFIED_MEASURED} tickets)`,'--c2'],
+ ['Wasted on rework',usd(wTot.cost),`${(wTot.cost/A.cost*100).toFixed(1)}% of spend · ${M(wTot.tokens)} tokens`,'--bad'],
+];
+$('kpis').innerHTML=k.map(([l,v,s,c])=>`<div class="kpi"><i style="background:var(${c})"></i><span>${l}</span><b>${v}</b><span>${s}</span></div>`).join('');
+
+// Tokens anatomy
+(function(){
+  const b=D.breakdown,parts=[['Cache read',b.cache_read,'var(--c2)',''],['Cache write (5m)',b.cache_write_5m,'var(--c3)',''],['Cache write (1h)',b.cache_write_1h,'var(--warn)',''],['Output',b.output,'var(--c4)',''],['Input (uncached)',b.input,'var(--c1)','']];
+  const t=parts.reduce((a,p)=>a+p[1],0);
+  $('tokStack').innerHTML=parts.map(([n,v,c])=>`<div title="${n}" style="width:${v/t*100}%;background:${c}">${v/t>.08?(v/t*100).toFixed(0)+'%':''}</div>`).join('');
+  $('tokTable').innerHTML=`<tr><th>Type</th><th class="num">tokens</th><th class="num">share</th></tr>`+parts.map(([n,v,c,p])=>`<tr><td><span style="color:${c}">■</span> ${n}</td><td class="num">${v.toLocaleString()}</td><td class="num">${(v/t*100).toFixed(1)}%</td></tr>`).join('');
+})();
+(function(){
+  const row=(n,x,c)=>`<tr><td><span style="color:${c}">■</span> ${n}</td><td class="num">${x.runs}</td><td class="num">${M(x.tokens)}</td><td class="num">${usd(x.cost)}</td><td class="num">${usd(x.cost/x.runs,3)}</td><td class="num">${hm(x.sec)}</td></tr>`;
+  const h=`<tr><th></th><th class="num">runs</th><th class="num">tokens</th><th class="num">cost</th><th class="num">$/run</th><th class="num">agent time</th></tr>`;
+  $('modelTable').innerHTML=h+row('Opus 5.5',D.byModel.opus,'var(--opus)')+row('Sonnet 5.5',D.byModel.sonnet,'var(--sonnet)')+
+   `<tr><td colspan="6" style="color:var(--mut);font-size:11px;padding-top:10px">By agent CLI</td></tr>`+row('Copilot CLI (to 08:55)',D.byCli.copilot,'var(--c3)')+row('Claude Code (from 09:29)',D.byCli.claude,'var(--c2)');
+})();
+
+// Burn
+(function(){
+  const svg=$('burn'),W=700,H=240,L=40,R=40,Tp=12,B=24,t0=T('04:15'),t1=T(NOW)+5,maxC=Math.ceil(A.cost/10)*10,maxT=Math.ceil(A.tokens/1e7)*10;
+  const x=t=>L+(T(t)-t0)/(t1-t0)*(W-L-R),y=v=>Tp+(1-v/maxC)*(H-Tp-B),y2=v=>Tp+(1-v/maxT)*(H-Tp-B);
+  let s='';
+  const band=(a,b,c,l)=>s+=`<rect x="${x(a)}" y="${Tp}" width="${x(b)-x(a)}" height="${H-Tp-B}" fill="${c}"/><text x="${(x(a)+x(b))/2}" y="${Tp+12}" text-anchor="middle">${l}</text>`;
+  band('06:50','08:26','color-mix(in srgb,var(--mut) 16%,transparent)','host asleep');
+  band('08:55','09:29','color-mix(in srgb,var(--bad) 22%,transparent)','quota out');
+  for(let v=0;v<=maxC;v+=10)s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--bd)"/><text x="${L-5}" y="${y(v)+3}" text-anchor="end">$${v}</text>`;
+  for(let v=0;v<=maxT;v+=20)s+=`<text x="${W-R+5}" y="${y2(v)+3}">${v}M</text>`;
+  ['05:00','06:00','07:00','08:00','09:00','10:00','11:00'].forEach(t=>s+=`<text x="${x(t)}" y="${H-7}" text-anchor="middle">${t}</text>`);
+  const pts=[[RUN_START,0,0,0],...D.series];
+  const step=(f)=>pts.map(p=>`${x(p[0])},${y(f(p))}`).join(' L');
+  s+=`<path d="M${x(RUN_START)},${y(0)} L${step(p=>p[1]+p[2])} L${x(NOW)},${y(0)}Z" fill="color-mix(in srgb,var(--opus) 70%,transparent)"/>`;
+  s+=`<path d="M${x(RUN_START)},${y(0)} L${step(p=>p[2])} L${x(NOW)},${y(0)}Z" fill="color-mix(in srgb,var(--sonnet) 80%,transparent)"/>`;
+  s+=`<path d="M${pts.map(p=>`${x(p[0])},${y2(p[3])}`).join(' L')}" fill="none" stroke="var(--c3)" stroke-width="2"/>`;
+  const l=pts[pts.length-1];
+  s+=`<text x="${x(l[0])-4}" y="${y(l[1]+l[2])-6}" text-anchor="end" style="fill:var(--fg);font-weight:700">${usd(l[1]+l[2])}</text>`;
+  s+=`<text x="${x(l[0])-4}" y="${y2(l[3])+14}" text-anchor="end" style="fill:var(--c3);font-weight:700">${l[3]}M tokens</text>`;
+  svg.innerHTML=s;
+})();
+
+// Waste
+(function(){
+  const colors=['var(--sonnet)','var(--opus)','var(--c3)','var(--bad)','var(--c4)'];
+  const OUT=34*60,engSec=wTot.sec+OUT;
+  $('wasteKpis').innerHTML=[
+   ['Tokens wasted',M(wTot.tokens),`${(wTot.tokens/A.tokens*100).toFixed(1)}% of all tokens`,'--c3'],
+   ['Cost wasted',usd(wTot.cost),`${(wTot.cost/A.cost*100).toFixed(1)}% of token spend · ${wTot.runs} runs`,'--bad'],
+   ['Engineering time wasted',hm(engSec),`<b data-eng="${engSec}"></b> at the hourly rate · rework + 34 min outage`,'--c4'],
+   ['Total cost of waste',`<span data-eng="${engSec}" data-add="${wTot.cost}"></span>`,`engineering time + ${usd(wTot.cost)} tokens`,'--warn'],
+  ].map(([l,v,s,c])=>`<div class="kpi"><i style="background:var(${c})"></i><span>${l}</span><b>${v}</b><span>${s}</span></div>`).join('');
+  // waterfall: total -> minus each waste -> productive
+  const svg=$('waterfall'),W=700,H=200,L=10,B=34,Tp=14,n=D.waste.length+2,bw=(W-L*2)/n*0.66,gap=(W-L*2)/n;
+  const y=v=>Tp+(1-v/A.cost)*(H-Tp-B);let s='',run=A.cost;
+  const bar=(i,top,bot,c,lbl,val)=>{const X=L+i*gap+(gap-bw)/2;s+=`<rect x="${X}" y="${y(top)}" width="${bw}" height="${Math.max(1.5,y(bot)-y(top))}" fill="${c}" rx="3"/><text x="${X+bw/2}" y="${y(top)-4}" text-anchor="middle" style="fill:var(--fg);font-weight:600">${val}</text>`;
+    lbl.split('|').forEach((t,j)=>s+=`<text x="${X+bw/2}" y="${H-B+13+j*11}" text-anchor="middle">${t}</text>`)};
+  bar(0,A.cost,0,'var(--c1)','Total|spend',usd(A.cost));
+  const short=['Sonnet|rework','Opus|rework','Copilot→Claude|redo','Failed|runs','Restart|re-runs'];
+  D.waste.forEach((w,i)=>{bar(i+1,run,run-w.cost,colors[i],short[i],w.cost?'−'+usd(w.cost):'$0');run-=w.cost});
+  bar(n-1,run,0,'var(--ok)','Productive|spend',usd(run));
+  svg.innerHTML=s;
+  $('wasteTable').innerHTML=`<tr><th>Category</th><th class="num">runs</th><th class="num">tokens</th><th class="num">cost</th><th class="num">agent time</th><th class="num">eng. time $</th><th>model of wasted work</th></tr>`+
+   D.waste.map((w,i)=>`<tr><td><b style="color:${colors[i]}">■</b> <b>${w.name}</b><div class="sub" style="font-size:11px">${w.desc}</div></td><td class="num">${w.runs}</td><td class="num">${M(w.tokens)}</td><td class="num">${usd(w.cost)}</td><td class="num">${hm(w.sec)}</td><td class="num" data-eng="${w.sec}"></td><td>${w.cost?`<div style="display:flex;height:8px;border-radius:4px;overflow:hidden;width:90px"><div style="width:${w.opus/w.cost*100}%;background:var(--opus)"></div><div style="width:${w.sonnet/w.cost*100}%;background:var(--sonnet)"></div></div><span class="sub" style="font-size:10px">opus ${usd(w.opus)} · sonnet ${usd(w.sonnet)}</span>`:'<span class="sub">timeouts</span>'}</td></tr>`).join('')+
+   `<tr><td><b style="color:var(--mut)">■</b> <b>Quota outage stall</b><div class="sub" style="font-size:11px">Copilot premium quota ran out at 08:55; the pipeline waited until the switch to Claude Code at 09:29. No tokens, but wall-clock engineering time.</div></td><td class="num">–</td><td class="num">0</td><td class="num">$0.00</td><td class="num">34m</td><td class="num" data-eng="${OUT}"></td><td><span class="sub">wall clock</span></td></tr>`+
+   `<tr><td><b>Total waste</b></td><td class="num">${wTot.runs}</td><td class="num">${M(wTot.tokens)}</td><td class="num"><b>${usd(wTot.cost)}</b></td><td class="num">${hm(engSec)}</td><td class="num"><b data-eng="${engSec}"></b></td><td></td></tr>`;
+  $('engCallout').innerHTML=`<b>Engineering view.</b> Every minute agents spend redoing rejected work, and every minute the pipeline stalls, is a minute the supervising engineer is held up. That is <b>${hm(engSec)}</b> = <b data-eng="${engSec}"></b> of engineering time at the hourly rate, <b id="engRatio" data-s="${engSec}" data-c="${wTot.cost}"></b> the ${usd(wTot.cost)} of wasted tokens. Lower-tier (Sonnet) rework alone holds up an engineer for ${hm(D.waste[0].sec)} (<b data-eng="${D.waste[0].sec}"></b>). Upper bound: some rework rounds ran in parallel across tickets.`;
+  const sw=D.waste[0],ow=D.waste[1];
+  const sonFirst=D.byModel.sonnet.cost-sw.cost;
+  $('tierCallout').innerHTML=`<b>Lower → higher tier economics.</b> Sonnet rework cost <b>${usd(sw.cost)}</b> (${(sw.cost/D.byModel.sonnet.cost*100).toFixed(0)}% of all Sonnet spend, ${hm(sw.sec)} of agent time), mostly QE automation re-runs. Opus rework cost <b>${usd(ow.cost)}</b> for only ${ow.runs} runs: one Opus redo costs <b>${usd(ow.cost/ow.runs)}</b> vs <b>${usd(sw.cost/sw.runs)}</b> per Sonnet redo (${(ow.cost/ow.runs/(sw.cost/sw.runs)).toFixed(1)}×). Average run: Sonnet ${usd(D.byModel.sonnet.cost/D.byModel.sonnet.runs,3)} vs Opus ${usd(D.byModel.opus.cost/D.byModel.opus.runs,3)}.`;
+  const sevC={blocking:'var(--bad)',major:'var(--warn)'};
+  updEng();
+  $('escTable').innerHTML=`<tr><th>Severity</th><th>Group PR</th><th>Opus critic lens</th><th>Finding</th></tr>`+D.prc.serious.map(f=>`<tr><td><span class="sev" style="background:${sevC[f.sev]}">${f.sev}</span></td><td>${f.t}</td><td>${f.lens}</td><td>${f.title}</td></tr>`).join('');
+  const pc=D.byStage['pr-check'];
+  $('escNote').innerHTML=`The Opus critic panel ran ${D.prc.rounds} PR checks: ${D.prc.raised} findings raised, <b>${D.prc.upheld} upheld</b> (${D.prc.sev.blocking} blocking, ${D.prc.sev.major} major, ${D.prc.sev.minor} minor), every one of them after the Sonnet QE/code verifiers had already passed the ticket. The panel cost <b>${usd(pc.cost)}</b> (${M(pc.tokens)} tokens, ${pc.runs} runs): <b>${usd(pc.cost/D.prc.upheld)}</b> per upheld finding, <b>${usd(pc.cost/(D.prc.sev.blocking+D.prc.sev.major))}</b> per blocking/major one. The fix rounds for these are still to come, so they're not in the waste totals.`;
+})();
+
+// Tickets
+(function(){
+  const mx=Math.max(...D.tickets.map(t=>t.cost));
+  $('ticketTable').innerHTML=`<tr><th>Ticket</th><th class="num">runs</th><th class="num">tokens</th><th>cost (opus | sonnet)</th><th class="num">$</th><th class="num">agent time</th><th class="num">rejections</th><th>CLI</th></tr>`+
+   D.tickets.map(t=>`<tr><td><b>${t.k}</b></td><td class="num">${t.runs}</td><td class="num">${M(t.tokens)}</td><td style="width:26%"><div style="display:flex;height:9px;border-radius:4px;overflow:hidden;width:${t.cost/mx*100}%"><div style="flex:${t.opus};background:var(--opus)"></div><div style="flex:${t.sonnet};background:var(--sonnet)"></div></div></td><td class="num">${usd(t.cost)}</td><td class="num">${hm(t.sec)}</td><td class="num" style="color:${t.rej>1?'var(--bad)':t.rej?'var(--warn)':'var(--ok)'}">${t.rej}</td><td><span class="pill">${t.cli==='claude+copilot'?'Copilot+Claude':t.cli==='claude'?'Claude':'Copilot'}</span></td></tr>`).join('');
+})();
+
+// Heal
+(function(){
+  const h=D.heal,c=h['BUG-11'].claude.cost+h['BUG-18'].claude.cost,tk=h['BUG-11'].claude.tokens+h['BUG-18'].claude.tokens,r=h['BUG-11'].claude.runs+h['BUG-18'].claude.runs,sec=h['BUG-11'].claude.sec+h['BUG-18'].claude.sec;
+  const lost=h['BUG-11'].copilot.cost+h['BUG-18'].copilot.cost;
+  $('heal').innerHTML=[
+   ['Cost per successful heal',usd(c/2),`BUG-11 ${usd(h['BUG-11'].claude.cost)} · BUG-18 ${usd(h['BUG-18'].claude.cost)}`,'--c2'],
+   ['Tokens per successful heal',M(tk/2),`${r} runs on Claude Code`,'--c3'],
+   ['Agent time per heal',hm(sec/2),'plan → implement → QE verified','--c4'],
+   ['Spent before the failure',usd(lost),'Copilot work lost to the outage','--bad'],
+  ].map(([l,v,s,cc])=>`<div class="kpi"><i style="background:var(${cc})"></i><span>${l}</span><b>${v}</b><span>${s}</span></div>`).join('');
+})();
+
+$('foot').innerHTML=`Sources: <code>.agent-metrics/{token-usage,subtask-runs,verifier-runs,pr-checks}.jsonl</code> from the 5 pushed group branches (<code>bugfix/teststack-bug-findings/*</code>), de-duplicated by run id: ${A.runs} runs, ${D.first}–${D.last} CST, ${VERIFIED_MEASURED} of the 13 verified tickets. Tickets not pushed yet (BUG-1/2/3/7/8/14/16) and the epic plan aren't included. The run log's all-worktree checkpoint (10:18) was $52.48 for 235 runs. Costs are the <code>cost_usd</code> the pipeline logs per run. Human cost = pipeline run hours (${RUN_START} start → last telemetry) × rate.`;
+</script>
+</body>
+</html>

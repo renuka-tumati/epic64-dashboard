@@ -1,0 +1,58 @@
+section,metric,value,unit
+human,run hours,6.77,h
+human,human cost,1489.4,USD
+agent,runs,184,
+agent,tokens,58261637,tokens
+agent,token cost,46.38,USD
+agent,agent compute,5.13,h
+total,total cost,1535.78,USD
+agent,tokens per verified ticket,5296512,tokens
+agent,cost per verified ticket,4.22,USD
+healing,cost per heal,4.26,USD
+waste: Sonnet output rejected → redone,tokens,5884050,
+waste: Sonnet output rejected → redone,token_cost_usd,3.13,
+waste: Sonnet output rejected → redone,time_h,0.81,
+waste: Sonnet output rejected → redone,eng_cost_usd,177.34,
+waste: Sonnet output rejected → redone,total_usd,180.47,
+waste: Opus output rejected → redone,tokens,3325437,
+waste: Opus output rejected → redone,token_cost_usd,2.05,
+waste: Opus output rejected → redone,time_h,0.24,
+waste: Opus output rejected → redone,eng_cost_usd,52.01,
+waste: Opus output rejected → redone,total_usd,54.06,
+waste: Copilot → Claude switch redo,tokens,4201566,
+waste: Copilot → Claude switch redo,token_cost_usd,1.97,
+waste: Copilot → Claude switch redo,time_h,0.31,
+waste: Copilot → Claude switch redo,eng_cost_usd,67.28,
+waste: Copilot → Claude switch redo,total_usd,69.25,
+waste: Failed / timed-out runs,tokens,0,
+waste: Failed / timed-out runs,token_cost_usd,0,
+waste: Failed / timed-out runs,time_h,0.55,
+waste: Failed / timed-out runs,eng_cost_usd,120.45,
+waste: Failed / timed-out runs,total_usd,120.45,
+waste: Pipeline restart re-runs (D6),tokens,1620269,
+waste: Pipeline restart re-runs (D6),token_cost_usd,1.3,
+waste: Pipeline restart re-runs (D6),time_h,0.12,
+waste: Pipeline restart re-runs (D6),eng_cost_usd,26.16,
+waste: Pipeline restart re-runs (D6),total_usd,27.46,
+waste: Quota outage stall,tokens,0,
+waste: Quota outage stall,token_cost_usd,0,
+waste: Quota outage stall,time_h,0.57,
+waste: Quota outage stall,eng_cost_usd,124.67,
+waste: Quota outage stall,total_usd,124.67,
+waste: TOTAL,tokens,15031322,
+waste: TOTAL,token_cost_usd,8.45,
+waste: TOTAL,eng_hours,2.6,
+waste: TOTAL,eng_cost_usd,567.91,
+waste: TOTAL,total_usd,576.36,
+waste: TOTAL,pct_of_token_spend,18.2,
+ticket BUG-4,tokens / cost / rejections,13090567 / 9.61 / 2,
+ticket BUG-5,tokens / cost / rejections,7180778 / 5.67 / 2,
+ticket BUG-6,tokens / cost / rejections,7064678 / 4.82 / 0,
+ticket BUG-11,tokens / cost / rejections,5802863 / 6.61 / 1,
+ticket BUG-12,tokens / cost / rejections,3162617 / 2.26 / 0,
+ticket BUG-13,tokens / cost / rejections,3787081 / 2.39 / 2,
+ticket BUG-17,tokens / cost / rejections,5890268 / 5.45 / 2,
+ticket BUG-18,tokens / cost / rejections,3763853 / 3.11 / 3,
+ticket BUG-19,tokens / cost / rejections,3809042 / 2.52 / 1,
+ticket BUG-20,tokens / cost / rejections,2472517 / 2.10 / 1,
+ticket BUG-21,tokens / cost / rejections,2237373 / 1.86 / 0,
