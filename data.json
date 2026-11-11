@@ -1,0 +1,7840 @@
+{
+ "title": "Epic #64 · Test Stack Bug Findings",
+ "links": [
+  {
+   "label": "epic #64",
+   "url": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/issues/64"
+  },
+  {
+   "label": "run log PR #96",
+   "url": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/96"
+  },
+  {
+   "label": "story-level dashboard ↗",
+   "url": "https://renuka-tumati.github.io/epic64-story-dashboard/"
+  }
+ ],
+ "repoUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop",
+ "tz": "CST",
+ "rate": 220,
+ "idleGapMin": 30,
+ "generatedAt": "2026-11-11T18:12:52.429Z",
+ "generated": "12:12",
+ "date": "2026-11-11",
+ "first": "04:19",
+ "last": "11:25",
+ "startMin": 259.55,
+ "endMin": 685.1667,
+ "bands": [
+  {
+   "a": 411.28333333333336,
+   "b": 500.25,
+   "kind": "idle",
+   "label": "idle / host asleep"
+  },
+  {
+   "a": 540.85,
+   "b": 572.25,
+   "kind": "outage",
+   "label": "copilot out → claude"
+  }
+ ],
+ "switchLabel": "copilot→claude",
+ "total": {
+  "runs": 289,
+  "tokens": 86335079,
+  "cost": 70.7579,
+  "sec": 24723
+ },
+ "opus": {
+  "runs": 115,
+  "tokens": 43990394,
+  "cost": 44.1469,
+  "sec": 10505
+ },
+ "sonnet": {
+  "runs": 174,
+  "tokens": 42344685,
+  "cost": 26.6109,
+  "sec": 14218
+ },
+ "byCli": {
+  "copilot": {
+   "runs": 165,
+   "tokens": 50671895,
+   "cost": 34.9843,
+   "sec": 14162
+  },
+  "claude": {
+   "runs": 124,
+   "tokens": 35663184,
+   "cost": 35.7736,
+   "sec": 10561
+  }
+ },
+ "byStage": {
+  "implement": {
+   "runs": 64,
+   "tokens": 26710826,
+   "cost": 22.5328,
+   "sec": 8171
+  },
+  "implement-pair": {
+   "runs": 3,
+   "tokens": 1931888,
+   "cost": 0.639,
+   "sec": 266
+  },
+  "implement-verify": {
+   "runs": 3,
+   "tokens": 501984,
+   "cost": 0.2868,
+   "sec": 55
+  },
+  "review": {
+   "runs": 20,
+   "tokens": 2553271,
+   "cost": 2.2334,
+   "sec": 282
+  },
+  "plan": {
+   "runs": 35,
+   "tokens": 7534354,
+   "cost": 5.3364,
+   "sec": 1305
+  },
+  "plan-verify": {
+   "runs": 22,
+   "tokens": 1201854,
+   "cost": 2.3663,
+   "sec": 322
+  },
+  "automation": {
+   "runs": 32,
+   "tokens": 19468652,
+   "cost": 7.9854,
+   "sec": 9165
+  },
+  "automation-verify": {
+   "runs": 23,
+   "tokens": 2384776,
+   "cost": 3.0096,
+   "sec": 1494
+  },
+  "pr-check": {
+   "runs": 87,
+   "tokens": 24047474,
+   "cost": 26.3682,
+   "sec": 3663
+  }
+ },
+ "breakdown": {
+  "input": 775878,
+  "output": 836366,
+  "cache_read": 74464413,
+  "cache_write_5m": 5925686,
+  "cache_write_1h": 4332736
+ },
+ "premium": 967,
+ "waste": {
+  "sonnet": {
+   "runs": 49,
+   "tokens": 11553702,
+   "cost": 6.7745,
+   "sec": 3195
+  },
+  "opus": {
+   "runs": 7,
+   "tokens": 4733980,
+   "cost": 2.814,
+   "sec": 1052
+  },
+  "switch": {
+   "runs": 15,
+   "tokens": 6896234,
+   "cost": 3.9342,
+   "sec": 1683
+  },
+  "failed": {
+   "runs": 10,
+   "tokens": 0,
+   "cost": 0,
+   "sec": 3114
+  }
+ },
+ "prc": {
+  "rounds": 9,
+  "raised": 61,
+  "upheld": 40,
+  "sev": {
+   "blocking": 2,
+   "major": 4,
+   "minor": 34
+  },
+  "serious": [
+   {
+    "t": "BUG-7+2",
+    "sev": "major",
+    "lens": "acceptance",
+    "title": "TC-BUG-14-06 unit test expects the removed BUG-8 row and fails"
+   },
+   {
+    "t": "BUG-7+2",
+    "sev": "major",
+    "lens": "design",
+    "title": "Coverage gap"
+   },
+   {
+    "t": "BUG-17+5",
+    "sev": "blocking",
+    "lens": "acceptance",
+    "title": "BUG-13 catalog-admin test is still test.fixme"
+   },
+   {
+    "t": "BUG-6",
+    "sev": "blocking",
+    "lens": "acceptance",
+    "title": "test.fixme not removed from basket-api.spec.ts"
+   },
+   {
+    "t": "BUG-6",
+    "sev": "major",
+    "lens": "flow",
+    "title": "test.fixme in basket-api.spec.ts not removed"
+   },
+   {
+    "t": "BUG-6",
+    "sev": "major",
+    "lens": "style",
+    "title": "Old fixme test left in basket-api.spec.ts, duplicating the new spec"
+   }
+  ]
+ },
+ "other": {
+  "runs": [],
+  "tokens": 0,
+  "cost": 0,
+  "sec": 0
+ },
+ "sources": [
+  "bugfix/teststack-bug-findings/basket-cart",
+  "bugfix/teststack-bug-findings/catalog-item-validation",
+  "bugfix/teststack-bug-findings/catalog-paging",
+  "bugfix/teststack-bug-findings/login-open-redirect",
+  "bugfix/teststack-bug-findings/token-audience",
+  "bugfix/teststack-bug-findings/webhooks-event-validation"
+ ],
+ "stories": [
+  {
+   "k": "BUG-1",
+   "issue": 31,
+   "title": "[BE - Ordering.API] - Any signed-in user can read any order by id",
+   "svc": "Ordering.API",
+   "status": "blocked",
+   "note": "No agent runs yet"
+  },
+  {
+   "k": "BUG-2",
+   "issue": 42,
+   "title": "[BE - Ordering.API] - Any signed-in user can cancel or ship any order",
+   "svc": "Ordering.API",
+   "status": "blocked",
+   "note": "No agent runs yet"
+  },
+  {
+   "k": "BUG-3",
+   "issue": 45,
+   "title": "[BE - Ordering.API] - Create order uses the userId from the request body instead of the token",
+   "svc": "Ordering.API",
+   "status": "blocked",
+   "note": "No agent runs yet"
+  },
+  {
+   "k": "BUG-4",
+   "issue": 46,
+   "title": "[BE - Catalog.API] - Catalog create, update and delete endpoints need no authentication",
+   "svc": "Catalog.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/token-audience",
+   "pr": 71,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/71",
+   "all": {
+    "runs": 34,
+    "tokens": 13090567,
+    "cost": 9.6051,
+    "sec": 1905
+   },
+   "opus": {
+    "runs": 10,
+    "tokens": 5990232,
+    "cost": 5.9456,
+    "sec": 778
+   },
+   "sonnet": {
+    "runs": 24,
+    "tokens": 7100335,
+    "cost": 3.6595,
+    "sec": 1127
+   },
+   "cli": {
+    "copilot": {
+     "runs": 32,
+     "tokens": 12588560,
+     "cost": 9.1807,
+     "sec": 1811
+    },
+    "claude": {
+     "runs": 2,
+     "tokens": 502007,
+     "cost": 0.4244,
+     "sec": 94
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 2,
+     "tokens": 2326790,
+     "cost": 1.3427,
+     "sec": 341
+    },
+    "implement-pair": {
+     "runs": 3,
+     "tokens": 1931888,
+     "cost": 0.639,
+     "sec": 266
+    },
+    "implement-verify": {
+     "runs": 3,
+     "tokens": 501984,
+     "cost": 0.2868,
+     "sec": 55
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 268104,
+     "cost": 0.1832,
+     "sec": 26
+    },
+    "plan": {
+     "runs": 2,
+     "tokens": 465837,
+     "cost": 0.398,
+     "sec": 116
+    },
+    "plan-verify": {
+     "runs": 2,
+     "tokens": 102227,
+     "cost": 0.1772,
+     "sec": 29
+    },
+    "automation": {
+     "runs": 2,
+     "tokens": 1797551,
+     "cost": 0.6389,
+     "sec": 422
+    },
+    "automation-verify": {
+     "runs": 2,
+     "tokens": 206543,
+     "cost": 0.328,
+     "sec": 38
+    },
+    "pr-check": {
+     "runs": 17,
+     "tokens": 5489643,
+     "cost": 5.6112,
+     "sec": 612
+    }
+   },
+   "bd": {
+    "input": 22130,
+    "output": 125641,
+    "cache_read": 11308427,
+    "cache_write_5m": 1557778,
+    "cache_write_1h": 76591
+   },
+   "start": 269.9333,
+   "end": 663.2167,
+   "runs": [
+    [
+     269.9333,
+     58,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4353,
+     501581,
+     "copilot",
+     "implementer"
+    ],
+    [
+     271.1333,
+     62,
+     "implement-pair",
+     "sonnet",
+     true,
+     1,
+     0.231,
+     484914,
+     "copilot",
+     "pair-implementer"
+    ],
+    [
+     272.95,
+     17,
+     "implement-verify",
+     "sonnet",
+     true,
+     1,
+     0.0832,
+     131536,
+     "copilot",
+     "pair-verifier"
+    ],
+    [
+     273.45,
+     184,
+     "implement-pair",
+     "sonnet",
+     true,
+     1,
+     0.3006,
+     1137344,
+     "copilot",
+     "pair-implementer"
+    ],
+    [
+     276.9667,
+     23,
+     "implement-verify",
+     "sonnet",
+     true,
+     1,
+     0.1131,
+     234603,
+     "copilot",
+     "pair-verifier"
+    ],
+    [
+     277.35,
+     20,
+     "implement-pair",
+     "sonnet",
+     true,
+     2,
+     0.1073,
+     309630,
+     "copilot",
+     "pair-implementer"
+    ],
+    [
+     279.2667,
+     15,
+     "implement-verify",
+     "sonnet",
+     true,
+     2,
+     0.0904,
+     135845,
+     "copilot",
+     "pair-verifier"
+    ],
+    [
+     279.65,
+     283,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.9073,
+     1825209,
+     "copilot",
+     "implementer"
+    ],
+    [
+     284.55,
+     26,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1832,
+     268104,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     284.9833,
+     95,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.2914,
+     278114,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     286.5667,
+     16,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.0891,
+     50798,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     286.8333,
+     21,
+     "plan",
+     "sonnet",
+     true,
+     2,
+     0.1066,
+     187723,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     287.1833,
+     13,
+     "plan-verify",
+     "sonnet",
+     true,
+     2,
+     0.0881,
+     51429,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     287.4,
+     349,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.4376,
+     1444515,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     296.4167,
+     17,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.105,
+     57572,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     297.1,
+     49,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3936,
+     367388,
+     "copilot",
+     "pr-check-video"
+    ],
+    [
+     297.1,
+     49,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.4737,
+     495571,
+     "copilot",
+     "pr-check-acceptance"
+    ],
+    [
+     297.1167,
+     31,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1361,
+     232106,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     297.1167,
+     72,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.9779,
+     669007,
+     "copilot",
+     "pr-check-flow"
+    ],
+    [
+     298.3167,
+     20,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1005,
+     181488,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     298.65,
+     10,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0767,
+     86473,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     298.65,
+     12,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.1444,
+     84455,
+     "copilot",
+     "pr-check-video"
+    ],
+    [
+     298.85,
+     11,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0768,
+     85848,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     299.0333,
+     17,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0761,
+     86568,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     299.3167,
+     64,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3214,
+     311327,
+     "copilot",
+     "pr-check-judge"
+    ],
+    [
+     320.0167,
+     56,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.9066,
+     535623,
+     "copilot",
+     "pr-check-acceptance"
+    ],
+    [
+     320.0333,
+     34,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.2425,
+     464181,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     320.0333,
+     83,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     1.0429,
+     853108,
+     "copilot",
+     "pr-check-flow"
+    ],
+    [
+     321.4167,
+     22,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1158,
+     264489,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     321.7833,
+     16,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0932,
+     213479,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     322.05,
+     14,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0906,
+     211569,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     322.2833,
+     52,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3423,
+     346963,
+     "copilot",
+     "pr-check-judge"
+    ],
+    [
+     660.8167,
+     73,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.2014,
+     353036,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     662.8667,
+     21,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.2231,
+     148971,
+     "claude",
+     "qe-automation-verifier"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 4,
+     "tokens": 684627,
+     "cost": 0.3926,
+     "sec": 69
+    },
+    "opus": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "switch": {
+     "runs": 2,
+     "tokens": 1502087,
+     "cost": 0.5425,
+     "sec": 366
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 8,
+     "passed": false,
+     "gaps": 2
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "score": 9,
+     "passed": true,
+     "gaps": 2
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 10,
+     "passed": true,
+     "gaps": 0
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 10,
+     "passed": true,
+     "gaps": 0
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "Acceptance criterion 'the matching row is removed from the bugs table in testing/flows/' is excluded under Out of scope although the story has no Test scope section permitting that. Add a case (e.g. file/content check on testing/flows/catalog.md) verifying the bug row is gone."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": "TC-BUG-4-09",
+     "detail": "No case shows an admin can still call the v1 update (UpdateItemV1 also got RequireAuthorization); add a happy-path admin PUT api-version=1.0 expecting success and persisted change."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "duplicate-case",
+     "case": "TC-BUG-4-05",
+     "detail": "Largely repeats TC-01 to TC-04; the only addition is the combined unchanged-state snapshot. Could fold into those cases."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "missing-sad-path",
+     "case": "TC-BUG-4-07",
+     "detail": "The non-admin 403 case does not cover the v1 update route (PUT /items?api-version=1.0), which is separately registered."
+    }
+   ],
+   "precheck": [],
+   "subtasks": [
+    {
+     "id": "identity",
+     "impl": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    },
+    {
+     "id": "catalog-auth",
+     "impl": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "CHANGES_REQUESTED",
+       "diag": {
+        "errors": 1,
+        "warnings": 0
+       }
+      },
+      {
+       "round": 2,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-4",
+     "stories": [
+      "BUG-4"
+     ],
+     "round": 1,
+     "score": 9,
+     "raised": 8,
+     "lens": {
+      "acceptance": 9,
+      "flow": 9,
+      "style": 9,
+      "video": 10
+     },
+     "upheld": [
+      {
+       "sev": "minor",
+       "lens": "acceptance",
+       "title": "Flows doc still says catalog writes have no authentication"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Policy name \"CatalogAdmin\" and role \"Admin\" are repeated string literals"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Redundant ToList in ProfileService"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Unrelated BOM removal in appsettings.json"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Stale recommendation 'Do' line"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Coverage gap"
+      }
+     ]
+    },
+    {
+     "target": "BUG-4",
+     "stories": [
+      "BUG-4"
+     ],
+     "round": 1,
+     "score": 9,
+     "raised": 8,
+     "lens": {
+      "acceptance": 9,
+      "flow": 9,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "minor",
+       "lens": "acceptance",
+       "title": "Flow map still says catalog has no authentication"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "services.md still says Catalog writes are anonymous"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "infrastructure.md still says Catalog has no authentication"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Unrelated BOM removal in appsettings.json"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Redundant ToList in ProfileService"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Coverage gap"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Coverage gap"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-5",
+   "issue": 47,
+   "title": "[FE - WebApp] - Open redirect after sign-in through a protocol-relative returnUrl",
+   "svc": "WebApp",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/login-open-redirect",
+   "pr": 72,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/72",
+   "all": {
+    "runs": 26,
+    "tokens": 7180778,
+    "cost": 5.6667,
+    "sec": 2321
+   },
+   "opus": {
+    "runs": 12,
+    "tokens": 4030578,
+    "cost": 3.7475,
+    "sec": 790
+   },
+   "sonnet": {
+    "runs": 14,
+    "tokens": 3150200,
+    "cost": 1.9192,
+    "sec": 1531
+   },
+   "cli": {
+    "copilot": {
+     "runs": 26,
+     "tokens": 7180778,
+     "cost": 5.6667,
+     "sec": 2321
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 7,
+     "tokens": 2672499,
+     "cost": 2.2416,
+     "sec": 615
+    },
+    "review": {
+     "runs": 2,
+     "tokens": 90411,
+     "cost": 0.1419,
+     "sec": 24
+    },
+    "plan": {
+     "runs": 1,
+     "tokens": 320324,
+     "cost": 0.2597,
+     "sec": 81
+    },
+    "plan-verify": {
+     "runs": 1,
+     "tokens": 47512,
+     "cost": 0.0793,
+     "sec": 14
+    },
+    "automation": {
+     "runs": 3,
+     "tokens": 1463134,
+     "cost": 0.7572,
+     "sec": 1285
+    },
+    "automation-verify": {
+     "runs": 2,
+     "tokens": 102225,
+     "cost": 0.1761,
+     "sec": 31
+    },
+    "pr-check": {
+     "runs": 10,
+     "tokens": 2484673,
+     "cost": 2.0108,
+     "sec": 271
+    }
+   },
+   "bd": {
+    "input": 436,
+    "output": 68054,
+    "cache_read": 6112163,
+    "cache_write_5m": 1000125,
+    "cache_write_1h": 0
+   },
+   "start": 262.3833,
+   "end": 369.9667,
+   "runs": [
+    [
+     262.3833,
+     30,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.275,
+     347699,
+     "copilot",
+     "implementer"
+    ],
+    [
+     269.8167,
+     32,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3884,
+     354596,
+     "copilot",
+     "implementer"
+    ],
+    [
+     270.35,
+     146,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3002,
+     397110,
+     "copilot",
+     "implementer"
+    ],
+    [
+     280.35,
+     106,
+     "implement",
+     "opus",
+     true,
+     2,
+     0.3414,
+     538651,
+     "copilot",
+     "implementer"
+    ],
+    [
+     285.95,
+     12,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.0719,
+     45300,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     286.1667,
+     81,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.2597,
+     320324,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     287.5333,
+     14,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.0793,
+     47512,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     287.7667,
+     478,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.2793,
+     423753,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     296.75,
+     16,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.0888,
+     50937,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     297.0167,
+     246,
+     "automation",
+     "sonnet",
+     true,
+     2,
+     0.145,
+     347185,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     320,
+     31,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3786,
+     327633,
+     "copilot",
+     "implementer"
+    ],
+    [
+     320.5,
+     220,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2932,
+     428865,
+     "copilot",
+     "implementer"
+    ],
+    [
+     353.65,
+     50,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2648,
+     277945,
+     "copilot",
+     "implementer"
+    ],
+    [
+     354.5667,
+     12,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.07,
+     45111,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     354.7833,
+     561,
+     "automation",
+     "sonnet",
+     true,
+     3,
+     0.333,
+     692196,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     366.8667,
+     15,
+     "automation-verify",
+     "sonnet",
+     true,
+     3,
+     0.0874,
+     51288,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     367.2,
+     23,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.1878,
+     170179,
+     "copilot",
+     "pr-check-design"
+    ],
+    [
+     367.2,
+     28,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1361,
+     322290,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     367.2,
+     58,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.4696,
+     432262,
+     "copilot",
+     "pr-check-flow"
+    ],
+    [
+     367.2167,
+     37,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3853,
+     313596,
+     "copilot",
+     "pr-check-acceptance"
+    ],
+    [
+     368.1667,
+     24,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1124,
+     261202,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     368.5667,
+     16,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0922,
+     211619,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     368.5667,
+     17,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.1693,
+     168674,
+     "copilot",
+     "pr-check-flow"
+    ],
+    [
+     368.85,
+     16,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0844,
+     165987,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     369.1167,
+     12,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.08,
+     165496,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     369.3,
+     40,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.2939,
+     273368,
+     "copilot",
+     "pr-check-judge"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 3,
+     "tokens": 1090669,
+     "cost": 0.5653,
+     "sec": 822
+    },
+    "opus": {
+     "runs": 1,
+     "tokens": 538651,
+     "cost": 0.3414,
+     "sec": 106
+    },
+    "switch": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 3
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 8,
+     "passed": false,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 3,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "other",
+     "case": "TC-BUG-5-01",
+     "detail": "The story repro opens the login URL and signs in as alice. The cases start from an already signed-in context. Add or adapt one case that signs in from anonymous with the malicious returnUrl and asserts the final landing page is on the WebApp (/)."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "missing-sad-path",
+     "case": null,
+     "detail": "The fix rule implies that `///evil.example` and a leading `\\\\evil.example` fall back to `/`. Neither is covered."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-5-08",
+     "detail": "The step says 'Search testing/flows/' without naming the file (identity-basket.md) or the row text to match."
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "agent": "qe-automation",
+     "cat": "tests-different-path",
+     "case": "TC-BUG-5-07",
+     "detail": "The case requires running auth-login.spec.ts and asserting the protocol-relative test executes (not skipped) and passes, every other test passes, and the exit code is 0. The test only reads the file text and checks that the test title is present and test.fixme is absent, so it would pass with test.skip or a commented-out test and does not check the run result."
+    },
+    {
+     "stage": "automation",
+     "round": 3,
+     "agent": "qe-automation",
+     "cat": "flaky-wait",
+     "case": "TC-BUG-5-07",
+     "detail": "The nested run uses --retries=1 and accepts status 'flaky' for the protocol-relative test, so a test that fails first and passes on retry still satisfies the case's 'passes' requirement."
+    }
+   ],
+   "precheck": [
+    {
+     "stage": "automation",
+     "round": 2,
+     "errors": [
+      "`npx playwright test -c playwright.teststack.config.ts --grep TC-BUG-5- e2e/teststack/bug-5-login-return-url.spec.ts` failed:\n… working in the next major version of npm. See `npm help npmrc` for supported config options.\n    npm warn Unknown user config \"email\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n\n\n    expect(received).toBe(e"
+     ]
+    }
+   ],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "verify": "ui",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "CHANGES_REQUESTED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      },
+      {
+       "round": 2,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    },
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": null,
+      "model": null
+     },
+     "verify": "ui",
+     "rounds": []
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-5",
+     "stories": [
+      "BUG-5"
+     ],
+     "round": 1,
+     "score": 9,
+     "raised": 4,
+     "lens": {
+      "acceptance": 10,
+      "flow": 9,
+      "design": 9,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "The story's signed-out journey is not run end to end"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Test plans name the wrong scenario"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Redundant double validation in OnInitializedAsync"
+      },
+      {
+       "sev": "minor",
+       "lens": "design",
+       "title": "Coverage gap"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-6",
+   "issue": 48,
+   "title": "[BE - Basket.API, Identity.API] - Basket.API accepts access tokens issued without the basket scope",
+   "svc": "Basket.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/token-audience",
+   "pr": 71,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/71",
+   "all": {
+    "runs": 21,
+    "tokens": 7064678,
+    "cost": 4.8151,
+    "sec": 1778
+   },
+   "opus": {
+    "runs": 9,
+    "tokens": 3869985,
+    "cost": 3.1171,
+    "sec": 621
+   },
+   "sonnet": {
+    "runs": 12,
+    "tokens": 3194693,
+    "cost": 1.6979,
+    "sec": 1157
+   },
+   "cli": {
+    "copilot": {
+     "runs": 21,
+     "tokens": 7064678,
+     "cost": 4.8151,
+     "sec": 1778
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 5,
+     "tokens": 2439978,
+     "cost": 1.7479,
+     "sec": 446
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 137476,
+     "cost": 0.0874,
+     "sec": 14
+    },
+    "plan": {
+     "runs": 1,
+     "tokens": 297817,
+     "cost": 0.1799,
+     "sec": 49
+    },
+    "plan-verify": {
+     "runs": 1,
+     "tokens": 46072,
+     "cost": 0.0754,
+     "sec": 13
+    },
+    "automation": {
+     "runs": 3,
+     "tokens": 1774342,
+     "cost": 0.5614,
+     "sec": 376
+    },
+    "automation-verify": {
+     "runs": 1,
+     "tokens": 92320,
+     "cost": 0.0826,
+     "sec": 11
+    },
+    "pr-check": {
+     "runs": 9,
+     "tokens": 2276673,
+     "cost": 2.0804,
+     "sec": 869
+    }
+   },
+   "bd": {
+    "input": 374,
+    "output": 59142,
+    "cache_read": 6186910,
+    "cache_write_5m": 818252,
+    "cache_write_1h": 0
+   },
+   "start": 259.55,
+   "end": 352.95,
+   "runs": [
+    [
+     259.55,
+     45,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3354,
+     418692,
+     "copilot",
+     "implementer"
+    ],
+    [
+     260.3,
+     186,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4265,
+     739295,
+     "copilot",
+     "implementer"
+    ],
+    [
+     324.3833,
+     39,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3076,
+     377633,
+     "copilot",
+     "implementer"
+    ],
+    [
+     325.0333,
+     138,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3166,
+     486138,
+     "copilot",
+     "implementer"
+    ],
+    [
+     328.4667,
+     14,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.0874,
+     137476,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     328.7167,
+     49,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.1799,
+     297817,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     329.5333,
+     13,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.0754,
+     46072,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     329.75,
+     165,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.1839,
+     474252,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     333.9667,
+     81,
+     "automation",
+     "sonnet",
+     true,
+     2,
+     0.1316,
+     388542,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     336.0333,
+     130,
+     "automation",
+     "sonnet",
+     true,
+     3,
+     0.2459,
+     911548,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     338.8167,
+     11,
+     "automation-verify",
+     "sonnet",
+     true,
+     3,
+     0.0826,
+     92320,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     339.1167,
+     38,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3619,
+     418220,
+     "copilot",
+     "implementer"
+    ],
+    [
+     339.7833,
+     26,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1263,
+     230858,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     339.7833,
+     37,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.293,
+     287966,
+     "copilot",
+     "pr-check-acceptance"
+    ],
+    [
+     339.7833,
+     75,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.4975,
+     680402,
+     "copilot",
+     "pr-check-flow"
+    ],
+    [
+     341.0333,
+     22,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1103,
+     182432,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     341.4,
+     17,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.1628,
+     169108,
+     "copilot",
+     "pr-check-flow"
+    ],
+    [
+     341.4,
+     620,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.314,
+     178377,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     351.7333,
+     14,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.078,
+     85970,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     351.9667,
+     12,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0826,
+     169029,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     352.1833,
+     46,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.416,
+     292531,
+     "copilot",
+     "pr-check-judge"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 3,
+     "tokens": 1392410,
+     "cost": 0.46,
+     "sec": 222
+    },
+    "opus": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "switch": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 3,
+     "score": 10,
+     "passed": true,
+     "gaps": 0
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "other",
+     "case": null,
+     "detail": "The fixme removal and bugs-table row removal are acceptance criteria in the story but are excluded as repository edits. Consider adding a note that TC-BUG-6-01 and TC-BUG-6-02 correspond to the un-fixme'd test and the rest of basket-api.spec.ts."
+    }
+   ],
+   "precheck": [
+    {
+     "stage": "automation",
+     "round": 1,
+     "errors": [
+      "`npx playwright test -c playwright.teststack.config.ts --grep TC-BUG-6- e2e/teststack/bug-6-basket-audience.spec.ts` failed:\n…6 › Login (3.5s)\n  ✓  2 [e2e tests without logged in] › e2e/BrowseItemTest.spec.ts:3:5 › browse catalog pages and view product details (1.5s)\n  ✓  3 [e2e tests logged in] › e2e/CartTest.spec.ts:4:5 › add, update, and remove an item from the cart (2.7s)\n  ✓  4 [e2e tests log"
+     ]
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "errors": [
+      "`npx playwright test -c playwright.teststack.config.ts --grep TC-BUG-6- e2e/teststack/bug-6-basket-audience.spec.ts` failed:\n…wseItemTest.spec.ts:3:5 › browse catalog pages and view product details (1.4s)\n  ✓  3 [e2e tests logged in] › e2e/CartTest.spec.ts:4:5 › add, update, and remove an item from the cart (2.7s)\n  ✓  4 [e2e tests logged in] › e2e/CheckoutTest.spec.ts:4:5 › place an order through"
+     ]
+    }
+   ],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": null
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-6",
+     "stories": [
+      "BUG-6"
+     ],
+     "round": 1,
+     "score": 6,
+     "raised": 10,
+     "lens": {
+      "acceptance": 6,
+      "flow": 8,
+      "style": 8
+     },
+     "upheld": [
+      {
+       "sev": "blocking",
+       "lens": "acceptance",
+       "title": "test.fixme not removed from basket-api.spec.ts"
+      },
+      {
+       "sev": "major",
+       "lens": "flow",
+       "title": "test.fixme in basket-api.spec.ts not removed"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Architecture docs still say audience is not validated"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Implementation note wrongly says Catalog.API is unaffected"
+      },
+      {
+       "sev": "major",
+       "lens": "style",
+       "title": "Old fixme test left in basket-api.spec.ts, duplicating the new spec"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Flow doc 'Covered by' omits the new spec"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Redundant ValidAudience assignment"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-7",
+   "issue": 49,
+   "title": "[FE - WebApp] - A basket line for a product no longer in the catalog breaks every page",
+   "svc": "WebApp",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/basket-cart",
+   "pr": 102,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/102",
+   "all": {
+    "runs": 39,
+    "tokens": 11168873,
+    "cost": 9.7776,
+    "sec": 1992
+   },
+   "opus": {
+    "runs": 19,
+    "tokens": 7143592,
+    "cost": 7.3497,
+    "sec": 1065
+   },
+   "sonnet": {
+    "runs": 20,
+    "tokens": 4025281,
+    "cost": 2.4279,
+    "sec": 927
+   },
+   "cli": {
+    "copilot": {
+     "runs": 28,
+     "tokens": 7767350,
+     "cost": 5.2844,
+     "sec": 1502
+    },
+    "claude": {
+     "runs": 11,
+     "tokens": 3401523,
+     "cost": 4.4932,
+     "sec": 490
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 3,
+     "tokens": 1650940,
+     "cost": 1.0421,
+     "sec": 296
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 135714,
+     "cost": 0.0829,
+     "sec": 13
+    },
+    "plan": {
+     "runs": 4,
+     "tokens": 776885,
+     "cost": 0.4299,
+     "sec": 96
+    },
+    "plan-verify": {
+     "runs": 2,
+     "tokens": 91849,
+     "cost": 0.1516,
+     "sec": 30
+    },
+    "automation": {
+     "runs": 2,
+     "tokens": 1299037,
+     "cost": 0.3856,
+     "sec": 555
+    },
+    "automation-verify": {
+     "runs": 2,
+     "tokens": 198624,
+     "cost": 0.1976,
+     "sec": 37
+    },
+    "pr-check": {
+     "runs": 25,
+     "tokens": 7015824,
+     "cost": 7.4879,
+     "sec": 965
+    }
+   },
+   "bd": {
+    "input": 84282,
+    "output": 104515,
+    "cache_read": 9653752,
+    "cache_write_5m": 885543,
+    "cache_write_1h": 440781
+   },
+   "start": 269.9167,
+   "end": 681.6667,
+   "runs": [
+    [
+     269.9167,
+     30,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2601,
+     294159,
+     "copilot",
+     "implementer"
+    ],
+    [
+     270.4333,
+     123,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.347,
+     511928,
+     "copilot",
+     "implementer"
+    ],
+    [
+     279.6833,
+     143,
+     "implement",
+     "opus",
+     true,
+     2,
+     0.435,
+     844853,
+     "copilot",
+     "implementer"
+    ],
+    [
+     284.75,
+     13,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.0829,
+     135714,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     284.9667,
+     34,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.1344,
+     275814,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     285.55,
+     21,
+     "plan",
+     "sonnet",
+     true,
+     2,
+     0.0909,
+     134919,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     285.9,
+     16,
+     "plan-verify",
+     "sonnet",
+     true,
+     2,
+     0.078,
+     46310,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     286.1667,
+     18,
+     "plan",
+     "sonnet",
+     true,
+     3,
+     0.0906,
+     137871,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     286.45,
+     23,
+     "plan",
+     "sonnet",
+     true,
+     4,
+     0.1139,
+     228281,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     286.8333,
+     14,
+     "plan-verify",
+     "sonnet",
+     true,
+     4,
+     0.0735,
+     45539,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     287.0833,
+     214,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.1794,
+     554893,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     291.3833,
+     22,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.0977,
+     98223,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     291.75,
+     341,
+     "automation",
+     "sonnet",
+     true,
+     2,
+     0.2062,
+     744144,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     298.7667,
+     15,
+     "automation-verify",
+     "sonnet",
+     true,
+     2,
+     0.1,
+     100401,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     299.1333,
+     44,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.2629,
+     237560,
+     "copilot",
+     "pr-check-design"
+    ],
+    [
+     299.1333,
+     59,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3262,
+     452808,
+     "copilot",
+     "pr-check-acceptance"
+    ],
+    [
+     299.1333,
+     65,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3282,
+     349230,
+     "copilot",
+     "pr-check-flow"
+    ],
+    [
+     299.1333,
+     97,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.5845,
+     602649,
+     "copilot",
+     "pr-check-video"
+    ],
+    [
+     299.1333,
+     39,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1107,
+     177447,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     300.75,
+     26,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1156,
+     261203,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     301.1833,
+     17,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.1621,
+     124557,
+     "copilot",
+     "pr-check-video"
+    ],
+    [
+     301.1833,
+     14,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0818,
+     165739,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     301.1833,
+     18,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.1774,
+     207139,
+     "copilot",
+     "pr-check-acceptance"
+    ],
+    [
+     301.4833,
+     15,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0867,
+     166315,
+     "copilot",
+     "pr-check-defender"
+    ],
+    [
+     301.7333,
+     12,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.0789,
+     165036,
+     "copilot",
+     "pr-check-style"
+    ],
+    [
+     301.7333,
+     12,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.1499,
+     123578,
+     "copilot",
+     "pr-check-video"
+    ],
+    [
+     301.7333,
+     18,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.1737,
+     207502,
+     "copilot",
+     "pr-check-acceptance"
+    ],
+    [
+     302.0167,
+     39,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.356,
+     373538,
+     "copilot",
+     "pr-check-judge"
+    ],
+    [
+     676.5833,
+     51,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.2917,
+     391579,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     676.5833,
+     30,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3434,
+     176381,
+     "claude",
+     "pr-check-design"
+    ],
+    [
+     676.6,
+     77,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.8219,
+     844894,
+     "claude",
+     "pr-check-acceptance"
+    ],
+    [
+     676.6,
+     97,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.7583,
+     646269,
+     "claude",
+     "pr-check-flow"
+    ],
+    [
+     678.2167,
+     69,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.5716,
+     344747,
+     "claude",
+     "pr-check-defender"
+    ],
+    [
+     679.3667,
+     13,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1542,
+     65837,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     679.3667,
+     28,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3109,
+     119438,
+     "claude",
+     "pr-check-flow"
+    ],
+    [
+     679.5833,
+     15,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1165,
+     66358,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     679.85,
+     31,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3506,
+     127072,
+     "claude",
+     "pr-check-defender"
+    ],
+    [
+     680.3667,
+     11,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1442,
+     63658,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     680.5333,
+     68,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.6298,
+     555290,
+     "claude",
+     "pr-check-judge"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 7,
+     "tokens": 1437465,
+     "cost": 0.7532,
+     "sec": 448
+    },
+    "opus": {
+     "runs": 1,
+     "tokens": 844853,
+     "cost": 0.435,
+     "sec": 143
+    },
+    "switch": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 2,
+     "score": 8,
+     "passed": false,
+     "gaps": 4
+    },
+    {
+     "stage": "plan",
+     "round": 4,
+     "score": 9,
+     "passed": true,
+     "gaps": 2
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 8,
+     "passed": false,
+     "gaps": 2
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "score": 10,
+     "passed": true,
+     "gaps": 0
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "invented-requirement",
+     "case": "TC-BUG-7-02",
+     "detail": "Asserts the text 'Discontinued Widget' appears 0 times, but the story never names product 99999. Assert only that exactly one line (Explorer 45L Backpack) is shown and nothing for 99999, without an invented name."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "invented-requirement",
+     "case": "TC-BUG-7-03",
+     "detail": "Relies on bob's 2-line, 3-unit basket in basket-edge, which the story does not state. Either drop the case or cite the scenario definition as the source for the precondition."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-7-03",
+     "detail": "'Seeded product names and quantities' is not concrete. List the exact product names and quantities expected."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "duplicate-case",
+     "case": "TC-BUG-7-04",
+     "detail": "Same assertions and precondition as TC-BUG-7-01 on a different page, and mislabelled as a not-found sad path. Merge it into TC-BUG-7-01 as a second page, or justify it as a distinct behavior. The /item/7 route is also not stated in the story."
+    },
+    {
+     "stage": "plan",
+     "round": 4,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "Acceptance criteria about removing test.fixme from basket-cart.spec.ts (spec passing, rest of file passing) and removing the bugs-table row in testing/flows/ are declared out of scope by the plan, but the story has no Test scope section saying so. Add a verification case or check for them, or have the story state they are out of scope."
+    },
+    {
+     "stage": "plan",
+     "round": 4,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-7-01",
+     "detail": "The sign-in step gives no concrete login page or flow. 'Cart menu renders' names no observable element or selector, and there is no way stated to observe the WebApp logs for the KeyNotFoundException check."
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "agent": "qe-automation",
+     "cat": "missing-assertion",
+     "case": "TC-BUG-7-01",
+     "detail": "The case expects WebApp logs to contain no KeyNotFoundException for key 99999. The test only checks the page text for 'KeyNotFoundException' and never reads the logs."
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "agent": "qe-automation",
+     "cat": "missing-assertion",
+     "case": "TC-BUG-7-03",
+     "detail": "The case expects WebApp logs to contain no KeyNotFoundException for key 99999. The test only checks the page text for 'KeyNotFoundException' and never reads the logs."
+    }
+   ],
+   "precheck": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "errors": [
+      "The plan has no sad-path case."
+     ]
+    },
+    {
+     "stage": "plan",
+     "round": 3,
+     "errors": [
+      "The plan has no sad-path case."
+     ]
+    }
+   ],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "verify": "ui",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "CHANGES_REQUESTED",
+       "diag": {
+        "errors": 17,
+        "warnings": 0
+       }
+      },
+      {
+       "round": 2,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-7",
+     "stories": [
+      "BUG-7"
+     ],
+     "round": 1,
+     "score": 9,
+     "raised": 8,
+     "lens": {
+      "acceptance": 9,
+      "flow": 10,
+      "design": 10,
+      "style": 9,
+      "video": 10
+     },
+     "upheld": [
+      {
+       "sev": "minor",
+       "lens": "acceptance",
+       "title": "Pass of the full basket-cart.spec.ts run is not evidenced"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Unrelated triple-slash directive added"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "New scenario duplicates basket-edge"
+      }
+     ]
+    },
+    {
+     "target": "BUG-7+2",
+     "stories": [
+      "BUG-7",
+      "BUG-8",
+      "BUG-14"
+     ],
+     "round": 1,
+     "score": 8,
+     "raised": 10,
+     "lens": {
+      "acceptance": 8,
+      "flow": 9,
+      "design": 8,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "major",
+       "lens": "acceptance",
+       "title": "TC-BUG-14-06 unit test expects the removed BUG-8 row and fails"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Decrease clicked before the Enter response re-renders still posts a stale value"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Incidental base64url literal and node reference edits not explained in the PR"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Compose-project naming computed twice"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Repeated POST /cart predicate in bug-14 spec"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "commit() return value undocumented"
+      },
+      {
+       "sev": "major",
+       "lens": "design",
+       "title": "Coverage gap"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-8",
+   "issue": 50,
+   "title": "[BE - Basket.API] - Basket.API stores zero and negative quantities",
+   "svc": "Basket.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/basket-cart",
+   "pr": 102,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/102",
+   "all": {
+    "runs": 21,
+    "tokens": 4778523,
+    "cost": 3.8565,
+    "sec": 1377
+   },
+   "opus": {
+    "runs": 6,
+    "tokens": 2126186,
+    "cost": 1.9286,
+    "sec": 482
+   },
+   "sonnet": {
+    "runs": 15,
+    "tokens": 2652337,
+    "cost": 1.9279,
+    "sec": 895
+   },
+   "cli": {
+    "copilot": {
+     "runs": 9,
+     "tokens": 1962883,
+     "cost": 1.3193,
+     "sec": 373
+    },
+    "claude": {
+     "runs": 12,
+     "tokens": 2815640,
+     "cost": 2.5372,
+     "sec": 1004
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 6,
+     "tokens": 2126186,
+     "cost": 1.9286,
+     "sec": 482
+    },
+    "review": {
+     "runs": 2,
+     "tokens": 299480,
+     "cost": 0.2147,
+     "sec": 31
+    },
+    "plan": {
+     "runs": 7,
+     "tokens": 614089,
+     "cost": 0.5126,
+     "sec": 140
+    },
+    "plan-verify": {
+     "runs": 1,
+     "tokens": 42508,
+     "cost": 0.123,
+     "sec": 12
+    },
+    "automation": {
+     "runs": 4,
+     "tokens": 1564834,
+     "cost": 0.9296,
+     "sec": 692
+    },
+    "automation-verify": {
+     "runs": 1,
+     "tokens": 131426,
+     "cost": 0.1481,
+     "sec": 20
+    }
+   },
+   "bd": {
+    "input": 7468,
+    "output": 46706,
+    "cache_read": 4158092,
+    "cache_write_5m": 170802,
+    "cache_write_1h": 395455
+   },
+   "start": 299.5667,
+   "end": 604.1667,
+   "runs": [
+    [
+     299.5667,
+     46,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2673,
+     295415,
+     "copilot",
+     "implementer"
+    ],
+    [
+     300.3333,
+     146,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3706,
+     567354,
+     "copilot",
+     "implementer"
+    ],
+    [
+     305.55,
+     63,
+     "implement",
+     "opus",
+     true,
+     2,
+     0.3272,
+     551023,
+     "copilot",
+     "implementer"
+    ],
+    [
+     308.25,
+     15,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.0884,
+     178661,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     308.5,
+     82,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.2657,
+     370430,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     548.3,
+     6,
+     "plan",
+     "sonnet",
+     false,
+     2,
+     0,
+     0,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     548.4167,
+     5,
+     "plan",
+     "sonnet",
+     false,
+     3,
+     0,
+     0,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     548.5,
+     5,
+     "plan",
+     "sonnet",
+     false,
+     4,
+     0,
+     0,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     548.5833,
+     5,
+     "plan",
+     "sonnet",
+     false,
+     5,
+     0,
+     0,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     577.7333,
+     24,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2848,
+     119704,
+     "claude",
+     "implementer"
+    ],
+    [
+     578.1333,
+     135,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3101,
+     261519,
+     "claude",
+     "implementer"
+    ],
+    [
+     581.9167,
+     16,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1263,
+     120819,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     582.1833,
+     20,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.1253,
+     121377,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     582.5167,
+     17,
+     "plan",
+     "sonnet",
+     true,
+     2,
+     0.1215,
+     122282,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     582.8,
+     12,
+     "plan-verify",
+     "sonnet",
+     true,
+     2,
+     0.123,
+     42508,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     583,
+     417,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.2656,
+     374421,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     593.4333,
+     105,
+     "automation",
+     "sonnet",
+     true,
+     2,
+     0.227,
+     437673,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     595.8833,
+     97,
+     "automation",
+     "sonnet",
+     true,
+     3,
+     0.2092,
+     302429,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     600.55,
+     73,
+     "automation",
+     "sonnet",
+     true,
+     4,
+     0.2279,
+     450311,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     602.6,
+     20,
+     "automation-verify",
+     "sonnet",
+     true,
+     4,
+     0.1481,
+     131426,
+     "claude",
+     "qe-automation-verifier"
+    ],
+    [
+     603.0333,
+     68,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3685,
+     331171,
+     "claude",
+     "implementer"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 6,
+     "tokens": 1486629,
+     "cost": 1.0566,
+     "sec": 324
+    },
+    "opus": {
+     "runs": 1,
+     "tokens": 551023,
+     "cost": 0.3272,
+     "sec": 63
+    },
+    "switch": {
+     "runs": 4,
+     "tokens": 1411860,
+     "cost": 0.9921,
+     "sec": 289
+    },
+    "failed": {
+     "runs": 4,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 21
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 2,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 4,
+     "score": 10,
+     "passed": true,
+     "gaps": 0
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "invented-requirement",
+     "case": "TC-BUG-8-02",
+     "detail": "Expected result asserts the full detail string including the prefix 'Invalid basket items: ', which the story does not state (it only shows 'Product 7: Invalid number of units (-3); Product 6: ...'). Assert that the detail contains both 'Product 7' with -3 and 'Product 6' with 0 instead, or have the story author fix the exact message."
+    }
+   ],
+   "precheck": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "errors": [
+      "`node_modules/.bin/markdownlint` (the commit hook's linter) failed on tests/plans/BUG-8-basket-quantity-not-validated/_index.md, tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-01-zero-and-negative-rejected.md, tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-02-message-lists-all-invalid-lines.md, tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-03-zero-quantity-rejected.m"
+     ]
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "errors": [
+      "tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-01-zero-and-negative-rejected.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-02-message-lists-all-invalid-lines.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-03-zero-quantity-rejected.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-04-negative-quantity-rejected.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-05-quantity-one-accepted.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-06-mixed-lines-store-nothing.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-8-basket-quantity-not-validated/TC-BUG-8-07-empty-basket-stays-valid.md: body must start with a \"# <id>: <title>\" heading."
+     ]
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "errors": [
+      "`npx playwright test -c playwright.teststack.config.ts --grep TC-BUG-8- e2e/teststack/bug-8-basket-quantity.spec.ts` failed:\n…idation › TC-BUG-8-01 zero and negative quantities are rejected and nothing is stored (90ms)\n  ✓   6 [scenarios] › e2e/teststack/bug-8-basket-quantity.spec.ts:31:7 › BUG-8: basket quantity validation › TC-BUG-8-02 the message lists every invalid line (6ms)\n  ✓   7 [scenario"
+     ]
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "errors": [
+      "`npx playwright test -c playwright.teststack.config.ts --grep TC-BUG-8- e2e/teststack/bug-8-basket-quantity.spec.ts` failed:\n…t quantity validation › TC-BUG-8-02 the message lists every invalid line (6ms)\n  ✓   7 [scenarios] › e2e/teststack/bug-8-basket-quantity.spec.ts:40:7 › BUG-8: basket quantity validation › TC-BUG-8-03 a single line with quantity 0 is rejected (55ms)\n  ✓   8 [scenarios] › e2e"
+     ]
+    },
+    {
+     "stage": "automation",
+     "round": 3,
+     "errors": [
+      "`npx playwright test -c playwright.teststack.config.ts --grep TC-BUG-8- e2e/teststack/bug-8-basket-quantity.spec.ts` failed:\n…quantity validation › TC-BUG-8-02 the message lists every invalid line (6ms)\n  ✓   7 [scenarios] › e2e/teststack/bug-8-basket-quantity.spec.ts:40:7 › BUG-8: basket quantity validation › TC-BUG-8-03 a single line with quantity 0 is rejected (235ms)\n  ✓   8 [scenarios] › e2e/"
+     ]
+    }
+   ],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "CHANGES_REQUESTED",
+       "diag": {
+        "errors": 1,
+        "warnings": 0
+       }
+      },
+      {
+       "round": 2,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    },
+    {
+     "id": "self",
+     "impl": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "claude",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": null
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-7+2",
+     "stories": [
+      "BUG-7",
+      "BUG-8",
+      "BUG-14"
+     ],
+     "round": 1,
+     "score": 8,
+     "raised": 10,
+     "lens": {
+      "acceptance": 8,
+      "flow": 9,
+      "design": 8,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "major",
+       "lens": "acceptance",
+       "title": "TC-BUG-14-06 unit test expects the removed BUG-8 row and fails"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Decrease clicked before the Enter response re-renders still posts a stale value"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Incidental base64url literal and node reference edits not explained in the PR"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Compose-project naming computed twice"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Repeated POST /cart predicate in bug-14 spec"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "commit() return value undocumented"
+      },
+      {
+       "sev": "major",
+       "lens": "design",
+       "title": "Coverage gap"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-9",
+   "issue": 51,
+   "title": "[BE - Ordering.API] - Create order returns 200 when the order was not created",
+   "svc": "Ordering.API",
+   "status": "blocked",
+   "note": "No agent runs yet"
+  },
+  {
+   "k": "BUG-10",
+   "issue": 32,
+   "title": "[BE - Ordering.API] - Invalid order status changes return 500 instead of a client error",
+   "svc": "Ordering.API",
+   "status": "blocked",
+   "note": "No agent runs yet"
+  },
+  {
+   "k": "BUG-11",
+   "issue": 33,
+   "title": "[BE - Catalog.API] - Negative pageSize or pageIndex returns 500",
+   "svc": "Catalog.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/catalog-paging",
+   "pr": 97,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/97",
+   "all": {
+    "runs": 22,
+    "tokens": 5863996,
+    "cost": 6.7097,
+    "sec": 1263
+   },
+   "opus": {
+    "runs": 12,
+    "tokens": 4065936,
+    "cost": 4.696,
+    "sec": 769
+   },
+   "sonnet": {
+    "runs": 10,
+    "tokens": 1798060,
+    "cost": 2.0137,
+    "sec": 494
+   },
+   "cli": {
+    "copilot": {
+     "runs": 2,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 11
+    },
+    "claude": {
+     "runs": 20,
+     "tokens": 5863996,
+     "cost": 6.7097,
+     "sec": 1252
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 5,
+     "tokens": 1797132,
+     "cost": 1.6877,
+     "sec": 486
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 95000,
+     "cost": 0.1563,
+     "sec": 14
+    },
+    "plan": {
+     "runs": 2,
+     "tokens": 594274,
+     "cost": 0.5037,
+     "sec": 114
+    },
+    "plan-verify": {
+     "runs": 2,
+     "tokens": 100822,
+     "cost": 0.3141,
+     "sec": 30
+    },
+    "automation": {
+     "runs": 1,
+     "tokens": 482155,
+     "cost": 0.4016,
+     "sec": 256
+    },
+    "automation-verify": {
+     "runs": 1,
+     "tokens": 49954,
+     "cost": 0.1542,
+     "sec": 14
+    },
+    "pr-check": {
+     "runs": 10,
+     "tokens": 2744659,
+     "cost": 3.4921,
+     "sec": 349
+    }
+   },
+   "bd": {
+    "input": 81931,
+    "output": 72874,
+    "cache_read": 4947013,
+    "cache_write_5m": 0,
+    "cache_write_1h": 762178
+   },
+   "start": 547.8833,
+   "end": 635.8667,
+   "runs": [
+    [
+     547.8833,
+     6,
+     "implement",
+     "opus",
+     false,
+     1,
+     0,
+     0,
+     "copilot",
+     "implementer"
+    ],
+    [
+     548,
+     5,
+     "implement",
+     "opus",
+     false,
+     2,
+     0,
+     0,
+     "copilot",
+     "implementer"
+    ],
+    [
+     572.25,
+     47,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4429,
+     356567,
+     "claude",
+     "implementer"
+    ],
+    [
+     573.05,
+     315,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.7071,
+     883294,
+     "claude",
+     "implementer"
+    ],
+    [
+     579.5,
+     14,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1563,
+     95000,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     579.75,
+     66,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.2619,
+     236979,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     580.85,
+     16,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.1547,
+     49642,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     581.1167,
+     48,
+     "plan",
+     "sonnet",
+     true,
+     2,
+     0.2418,
+     357295,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     581.9167,
+     14,
+     "plan-verify",
+     "sonnet",
+     true,
+     2,
+     0.1594,
+     51180,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     582.15,
+     256,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.4016,
+     482155,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     587.4667,
+     113,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.5377,
+     557271,
+     "claude",
+     "implementer"
+    ],
+    [
+     596.4,
+     14,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.1542,
+     49954,
+     "claude",
+     "qe-automation-verifier"
+    ],
+    [
+     632.5833,
+     79,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.6566,
+     600261,
+     "claude",
+     "pr-check-flow"
+    ],
+    [
+     632.5833,
+     39,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3734,
+     287657,
+     "claude",
+     "pr-check-design"
+    ],
+    [
+     632.5833,
+     60,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.5783,
+     527220,
+     "claude",
+     "pr-check-acceptance"
+    ],
+    [
+     632.6,
+     43,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.2066,
+     298470,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     633.9167,
+     35,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3726,
+     290802,
+     "claude",
+     "pr-check-defender"
+    ],
+    [
+     634.4833,
+     11,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.2626,
+     62168,
+     "claude",
+     "pr-check-flow"
+    ],
+    [
+     634.5,
+     16,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.143,
+     115582,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     634.7667,
+     10,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.2664,
+     63284,
+     "claude",
+     "pr-check-defender"
+    ],
+    [
+     634.9333,
+     7,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1342,
+     61803,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     635.05,
+     49,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.4985,
+     437412,
+     "claude",
+     "pr-check-judge"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 2,
+     "tokens": 408475,
+     "cost": 0.4012,
+     "sec": 62
+    },
+    "opus": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "switch": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "failed": {
+     "runs": 2,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 11
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 8,
+     "passed": false,
+     "gaps": 4
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "invented-requirement",
+     "case": "TC-BUG-11-01",
+     "detail": "The story only requires '400 BadRequest with a validation problem'. TC-01, 02, 03, 04, 05, 06, 07 and 12 assert exact strings ('PageSize must be between 0 and 100.', 'PageIndex must be 0 or greater.') and exact error keys (errors.PageSize / errors.PageIndex). The plan admits in its own Open questions that the wording is not stated. Assert status 400, an application/problem+json body with status 400 and a non-empty `errors` object, and at most that the entry concerns pageSize or pageIndex. Drop the literal messages."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "invented-requirement",
+     "case": "TC-BUG-11-12",
+     "detail": "The 'exactly the keys PageSize and PageIndex' assertion, and its rationale that Validate() returns errors keyed by property, are not in the story. The Implementation Notes only say Validate() exists. The behavior of reporting both errors together is a reasonable implication, but the strict-equality and key-name expectations go beyond the story."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-11-05",
+     "detail": "The story names only the BFF base URL http://localhost:18087 and says it 'behaves the same'. The case invents the path /catalog-api/api/catalog/items without a source. Precondition and step must state how the BFF route is determined (for example from testing/flows or the existing spec). The case should assert only the 400 status and the validation problem, not exact messages."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "The Implementation Notes say the filter is applied to GetRelevantItems and GetRelevantItems-V2, but the plan excludes them as out of scope. Validation runs in an endpoint filter before the handler, so a negative pageSize or pageIndex should return 400 without needing the AI service. Add a case for each of these routes, or have the story author state that they are untestable on the test stack."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "invented-requirement",
+     "case": null,
+     "detail": "Cases TC-BUG-11-01 to 15, 18 and 19 assert an `errors` entry keyed `pageSize` or `pageIndex`. The story only says `400` with a validation problem and names no keys. The plan's Open questions say no case asserts error keys, so the cases contradict it. Either remove the per-parameter key assertions (keep status 400, problem+json content type and a non-empty `errors` object) or move the key naming to Open questions."
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "agent": "qe-automation",
+     "cat": "tests-different-path",
+     "case": "TC-BUG-11-16",
+     "detail": "The case requires running catalog-api.spec.ts and expecting exit 0 with the previously fixme test reported passed and no other test failing. The automated test only reads the spec file and regex-checks that test.fixme is gone and test( is present. It would pass even if that spec's tests failed."
+    }
+   ],
+   "precheck": [],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "claude",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-11+1",
+     "stories": [
+      "BUG-11",
+      "BUG-12"
+     ],
+     "round": 1,
+     "score": 9,
+     "raised": 2,
+     "lens": {
+      "acceptance": 10,
+      "flow": 9,
+      "design": 9,
+      "style": 10
+     },
+     "upheld": [
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Large pageIndex overflows pageSize*pageIndex to a negative OFFSET and still returns 500"
+      },
+      {
+       "sev": "minor",
+       "lens": "design",
+       "title": "Coverage gap"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-12",
+   "issue": 34,
+   "title": "[FE - WebApp] - Catalog page ?page=0 or ?page=-1 never loads",
+   "svc": "Catalog.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/catalog-paging",
+   "pr": 97,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/97",
+   "all": {
+    "runs": 8,
+    "tokens": 3233204,
+    "cost": 2.2889,
+    "sec": 1674
+   },
+   "opus": {
+    "runs": 3,
+    "tokens": 1016554,
+    "cost": 1.1356,
+    "sec": 358
+   },
+   "sonnet": {
+    "runs": 5,
+    "tokens": 2216650,
+    "cost": 1.1533,
+    "sec": 1316
+   },
+   "cli": {
+    "claude": {
+     "runs": 8,
+     "tokens": 3233204,
+     "cost": 2.2889,
+     "sec": 1674
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 3,
+     "tokens": 1016554,
+     "cost": 1.1356,
+     "sec": 358
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 160295,
+     "cost": 0.1254,
+     "sec": 10
+    },
+    "plan": {
+     "runs": 1,
+     "tokens": 436824,
+     "cost": 0.2734,
+     "sec": 61
+    },
+    "plan-verify": {
+     "runs": 1,
+     "tokens": 66197,
+     "cost": 0.134,
+     "sec": 11
+    },
+    "automation": {
+     "runs": 1,
+     "tokens": 1416467,
+     "cost": 0.4548,
+     "sec": 1209
+    },
+    "automation-verify": {
+     "runs": 1,
+     "tokens": 136867,
+     "cost": 0.1658,
+     "sec": 25
+    }
+   },
+   "bd": {
+    "input": 70240,
+    "output": 27344,
+    "cache_read": 2848300,
+    "cache_write_5m": 0,
+    "cache_write_1h": 287320
+   },
+   "start": 597.15,
+   "end": 632.5167,
+   "runs": [
+    [
+     597.15,
+     41,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2923,
+     168841,
+     "claude",
+     "implementer"
+    ],
+    [
+     597.8333,
+     248,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4314,
+     520203,
+     "claude",
+     "implementer"
+    ],
+    [
+     609.2833,
+     10,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1254,
+     160295,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     609.45,
+     61,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.2734,
+     436824,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     610.4667,
+     11,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.134,
+     66197,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     610.65,
+     1209,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.4548,
+     1416467,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     618.8167,
+     69,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4119,
+     327510,
+     "claude",
+     "implementer"
+    ],
+    [
+     632.1,
+     25,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.1658,
+     136867,
+     "claude",
+     "qe-automation-verifier"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "opus": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "switch": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 2
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "untestable-expectation",
+     "case": "TC-BUG-12-09",
+     "detail": "'Any remaining mention describes the pages as treated as page 1' is subjective. State a precise check, e.g. zero rows in the bugs table of testing/flows/catalog.md matching page=0 or page=-1."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-12-08",
+     "detail": "The grep in step 1 does not define a pass criterion when fixme occurs elsewhere in the file. Specify that no test.fixme remains on the ?page= first-page tests, or that the grep returns nothing."
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "agent": "qe-automation",
+     "cat": "tests-different-path",
+     "case": "TC-BUG-12-08",
+     "detail": "The case requires running catalog-browse.spec.ts and seeing the ?page=0 and ?page=-1 tests pass, not skipped. The test only reads the file and checks for the absence of 'fixme' and the presence of the loop source text, so it never executes those tests or verifies they pass."
+    }
+   ],
+   "precheck": [],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "verify": "ui",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-11+1",
+     "stories": [
+      "BUG-11",
+      "BUG-12"
+     ],
+     "round": 1,
+     "score": 9,
+     "raised": 2,
+     "lens": {
+      "acceptance": 10,
+      "flow": 9,
+      "design": 9,
+      "style": 10
+     },
+     "upheld": [
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Large pageIndex overflows pageSize*pageIndex to a negative OFFSET and still returns 500"
+      },
+      {
+       "sev": "minor",
+       "lens": "design",
+       "title": "Coverage gap"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-13",
+   "issue": 35,
+   "title": "[BE - Catalog.API] - Catalog accepts items with an empty name or a negative price",
+   "svc": "Catalog.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/catalog-item-validation",
+   "pr": 100,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/100",
+   "all": {
+    "runs": 15,
+    "tokens": 3787081,
+    "cost": 2.3877,
+    "sec": 3038
+   },
+   "opus": {
+    "runs": 3,
+    "tokens": 1183413,
+    "cost": 0.7676,
+    "sec": 2525
+   },
+   "sonnet": {
+    "runs": 12,
+    "tokens": 2603668,
+    "cost": 1.6201,
+    "sec": 513
+   },
+   "cli": {
+    "copilot": {
+     "runs": 13,
+     "tokens": 3362943,
+     "cost": 1.9965,
+     "sec": 2926
+    },
+    "claude": {
+     "runs": 2,
+     "tokens": 424138,
+     "cost": 0.3912,
+     "sec": 112
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 3,
+     "tokens": 1183413,
+     "cost": 0.7676,
+     "sec": 2525
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 137700,
+     "cost": 0.0855,
+     "sec": 14
+    },
+    "plan": {
+     "runs": 3,
+     "tokens": 473598,
+     "cost": 0.3566,
+     "sec": 88
+    },
+    "plan-verify": {
+     "runs": 3,
+     "tokens": 150770,
+     "cost": 0.2638,
+     "sec": 50
+    },
+    "automation": {
+     "runs": 3,
+     "tokens": 1485449,
+     "cost": 0.5828,
+     "sec": 324
+    },
+    "automation-verify": {
+     "runs": 2,
+     "tokens": 356151,
+     "cost": 0.3314,
+     "sec": 37
+    }
+   },
+   "bd": {
+    "input": 18576,
+    "output": 37653,
+    "cache_read": 3268479,
+    "cache_write_5m": 390750,
+    "cache_write_1h": 71623
+   },
+   "start": 467.4,
+   "end": 652.6,
+   "runs": [
+    [
+     467.4,
+     1971,
+     "implement",
+     "opus",
+     false,
+     1,
+     0,
+     0,
+     "copilot",
+     "implementer"
+    ],
+    [
+     500.25,
+     433,
+     "implement",
+     "opus",
+     true,
+     2,
+     0.3438,
+     443872,
+     "copilot",
+     "implementer"
+    ],
+    [
+     507.5,
+     121,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4238,
+     739541,
+     "copilot",
+     "implementer"
+    ],
+    [
+     511.7333,
+     14,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.0855,
+     137700,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     511.9667,
+     38,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.136,
+     189885,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     512.6167,
+     16,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.0833,
+     48307,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     512.8667,
+     26,
+     "plan",
+     "sonnet",
+     true,
+     2,
+     0.1128,
+     141941,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     513.3,
+     19,
+     "plan-verify",
+     "sonnet",
+     true,
+     2,
+     0.0909,
+     50634,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     513.6167,
+     24,
+     "plan",
+     "sonnet",
+     true,
+     3,
+     0.1078,
+     141772,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     514.0167,
+     15,
+     "plan-verify",
+     "sonnet",
+     true,
+     3,
+     0.0896,
+     51829,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     514.2667,
+     207,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.2867,
+     801093,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     517.7333,
+     24,
+     "automation",
+     "sonnet",
+     true,
+     2,
+     0.1181,
+     400111,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     518.35,
+     18,
+     "automation-verify",
+     "sonnet",
+     true,
+     2,
+     0.1182,
+     216258,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     650.5167,
+     93,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.178,
+     284245,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     652.2833,
+     19,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.2132,
+     139893,
+     "claude",
+     "qe-automation-verifier"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 6,
+     "tokens": 1002545,
+     "cost": 0.6374,
+     "sec": 126
+    },
+    "opus": {
+     "runs": 1,
+     "tokens": 443872,
+     "cost": 0.3438,
+     "sec": 433
+    },
+    "switch": {
+     "runs": 1,
+     "tokens": 801093,
+     "cost": 0.2867,
+     "sec": 207
+    },
+    "failed": {
+     "runs": 1,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 1971
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 7,
+     "passed": false,
+     "gaps": 4
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "score": 8,
+     "passed": false,
+     "gaps": 4
+    },
+    {
+     "stage": "plan",
+     "round": 3,
+     "score": 9,
+     "passed": true,
+     "gaps": 2
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 2
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "missing-sad-path",
+     "case": null,
+     "detail": "Implementation notes fix Price >= 0 (zero allowed). Add cases for price 0 returning 201 and a value just below zero (for example -0.01) returning 400. The plan wrongly lists price 0 as an open question."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "missing-sad-path",
+     "case": null,
+     "detail": "The code map says whitespace-only names are rejected. Add a create case with name '   ' expecting 400, and remove the 'whitespace not in story' open question."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "missing-sad-path",
+     "case": "TC-BUG-13-06",
+     "detail": "The v1 PUT route is only tested with an empty name. Add a negative-price case for v1 PUT."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-13-04",
+     "detail": "The expected result refers to 'the price it had before the PUT' but there is no step that reads it first. Add a GET before the PUT. Also drop the 'not 201' wording in TC-04, TC-05 and TC-06, which does not apply to a PUT."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "No happy-path case for update: a valid v2 PUT /items/{id} (and v1 PUT /items) must still succeed and persist the change, since validation was inserted before the item lookup. Add a case for each, or one for the v2 route."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "Price 0 is only tested on create. Price >= 0 applies to create and update, so add an update case with price 0 expecting success."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "untestable-expectation",
+     "case": "TC-BUG-13-05",
+     "detail": "The story says an invalid body never publishes ProductPriceChangedIntegrationEvent, but the case only asserts the price is unchanged. Either assert the event is not published through an observable channel or remove the implication from the Why."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-13-06",
+     "detail": "Expected name 'Edge 01 Penny Boot' is hard-coded rather than read from a GET before the PUT, unlike TC-04. State the scenario's source for it or capture the name beforehand."
+    },
+    {
+     "stage": "plan",
+     "round": 3,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-13-03",
+     "detail": "The count comparison uses pageSize=100 without stating the scenario has fewer than 100 items; use a filter or state the item count so two engineers write the same test."
+    },
+    {
+     "stage": "plan",
+     "round": 3,
+     "agent": "qe-plan",
+     "cat": "missing-sad-path",
+     "case": null,
+     "detail": "No update case probes the just-below-zero price (-0.01) on v2 or v1 PUT; the negative boundary is only tested on create."
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "agent": "qe-automation",
+     "cat": "wrong-layer",
+     "case": "TC-BUG-13-01",
+     "detail": "The cases target the teststack API at localhost:18082 with a real admin bearer token. The tests use WebApplicationFactory with a Postgres container and a test authentication middleware. This follows the existing Catalog.FunctionalTests convention, and the real API and database are still exercised, so it is minor."
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "agent": "qe-automation",
+     "cat": "tests-different-path",
+     "case": "TC-BUG-13-01",
+     "detail": "The case requires an admin bearer token with catalog write scope. The tests send no token because the fixture's TestAuthenticationMiddleware bypasses authentication. This applies to every case (01-14); it is low impact because it matches the project's existing fixture."
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "agent": "qe-automation",
+     "cat": "other",
+     "case": "TC-BUG-13-04",
+     "detail": "The cases assume the teststack at localhost:18082 with scenario catalog-edge loaded. The tests use an in-process WebApplicationFactory with a Postgres container and rely on the default seed having item 1, so the bug-13 scenario.yaml is not exercised. The layer is still functional with a real database, so the impact is low."
+    }
+   ],
+   "precheck": [
+    {
+     "stage": "automation",
+     "round": 1,
+     "errors": [
+      "`dotnet` (the commit hook's linter) failed on tests/Catalog.FunctionalTests/CatalogItemValidationTests.cs:\n/Users/armando.dollia/code/AI-Immersion-eShop-worktrees/bug-13/tests/Catalog.FunctionalTests/CatalogItemValidationTests.cs(1,1): error CHARSET: Fix file encoding. [/Users/armando.dollia/code/AI-Immersion-eShop-worktrees/bug-13/]\n"
+     ]
+    }
+   ],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-17+5",
+     "stories": [
+      "BUG-17",
+      "BUG-13",
+      "BUG-19",
+      "BUG-18",
+      "BUG-20",
+      "BUG-21"
+     ],
+     "round": 1,
+     "score": 6,
+     "raised": 9,
+     "lens": {
+      "acceptance": 6,
+      "flow": 9,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "blocking",
+       "lens": "acceptance",
+       "title": "BUG-13 catalog-admin test is still test.fixme"
+      },
+      {
+       "sev": "minor",
+       "lens": "acceptance",
+       "title": "Flows doc still lists duplicate id as an open bug"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Repeating a negative id on create still returns 500"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "409 response content type in the generated Catalog.API.json is application/json instead of application/problem+json"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-14",
+   "issue": 36,
+   "title": "[FE - WebApp] - Typing a cart quantity, pressing Enter, then clicking Decrease can save the wrong quantity",
+   "svc": "WebApp",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/basket-cart",
+   "pr": 102,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/102",
+   "all": {
+    "runs": 16,
+    "tokens": 5414595,
+    "cost": 3.7987,
+    "sec": 1572
+   },
+   "opus": {
+    "runs": 6,
+    "tokens": 1332621,
+    "cost": 1.571,
+    "sec": 287
+   },
+   "sonnet": {
+    "runs": 10,
+    "tokens": 4081974,
+    "cost": 2.2277,
+    "sec": 1285
+   },
+   "cli": {
+    "copilot": {
+     "runs": 2,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 11
+    },
+    "claude": {
+     "runs": 14,
+     "tokens": 5414595,
+     "cost": 3.7987,
+     "sec": 1561
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 6,
+     "tokens": 1332621,
+     "cost": 1.571,
+     "sec": 287
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 59040,
+     "cost": 0.1179,
+     "sec": 11
+    },
+    "plan": {
+     "runs": 2,
+     "tokens": 596454,
+     "cost": 0.4282,
+     "sec": 86
+    },
+    "plan-verify": {
+     "runs": 2,
+     "tokens": 125437,
+     "cost": 0.2579,
+     "sec": 31
+    },
+    "automation": {
+     "runs": 3,
+     "tokens": 3073481,
+     "cost": 1.0611,
+     "sec": 1122
+    },
+    "automation-verify": {
+     "runs": 2,
+     "tokens": 227562,
+     "cost": 0.3626,
+     "sec": 35
+    }
+   },
+   "bd": {
+    "input": 114950,
+    "output": 49933,
+    "cache_read": 4745027,
+    "cache_write_5m": 0,
+    "cache_write_1h": 504685
+   },
+   "start": 548.9,
+   "end": 676.5333,
+   "runs": [
+    [
+     548.9,
+     5,
+     "implement",
+     "opus",
+     false,
+     1,
+     0,
+     0,
+     "copilot",
+     "implementer"
+    ],
+    [
+     548.9833,
+     6,
+     "implement",
+     "opus",
+     false,
+     2,
+     0,
+     0,
+     "copilot",
+     "implementer"
+    ],
+    [
+     604.3667,
+     31,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3029,
+     170718,
+     "claude",
+     "implementer"
+    ],
+    [
+     604.9,
+     143,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4872,
+     572741,
+     "claude",
+     "implementer"
+    ],
+    [
+     613.4,
+     11,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1179,
+     59040,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     613.5833,
+     47,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.2115,
+     236545,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     614.3667,
+     19,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.1282,
+     61989,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     614.6833,
+     39,
+     "plan",
+     "sonnet",
+     true,
+     2,
+     0.2167,
+     359909,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     615.35,
+     12,
+     "plan-verify",
+     "sonnet",
+     true,
+     2,
+     0.1297,
+     63448,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     615.5667,
+     717,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.6382,
+     2140995,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     618.8,
+     38,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4134,
+     269390,
+     "claude",
+     "implementer"
+    ],
+    [
+     627.5833,
+     46,
+     "automation",
+     "sonnet",
+     true,
+     2,
+     0.1267,
+     163736,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     632.25,
+     13,
+     "automation-verify",
+     "sonnet",
+     true,
+     2,
+     0.1611,
+     78629,
+     "claude",
+     "qe-automation-verifier"
+    ],
+    [
+     632.45,
+     359,
+     "automation",
+     "sonnet",
+     true,
+     3,
+     0.2962,
+     768750,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     641.65,
+     22,
+     "automation-verify",
+     "sonnet",
+     true,
+     3,
+     0.2015,
+     148933,
+     "claude",
+     "qe-automation-verifier"
+    ],
+    [
+     675.4667,
+     64,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3676,
+     319772,
+     "claude",
+     "implementer"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 6,
+     "tokens": 1583405,
+     "cost": 1.1319,
+     "sec": 491
+    },
+    "opus": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "switch": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "failed": {
+     "runs": 2,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 11
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 8,
+     "passed": false,
+     "gaps": 4
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "score": 8,
+     "passed": false,
+     "gaps": 2
+    },
+    {
+     "stage": "automation",
+     "round": 3,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "AC 'the matching row is removed from the bugs table in testing/flows/' is declared out of scope, but the story has no Test scope section excusing it. Add a case that verifies the BUG-14 row is absent from testing/flows/identity-basket.md (or the flows bugs table)."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-14-01",
+     "detail": "Step 6 'resetting bob's basket to the seeded state' does not name the mechanism (reload basket-edge scenario or a specific Redis reset); two engineers could implement it differently."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-14-01",
+     "detail": "Seed state ('quantity 3', 'any of his two lines') is not stated by the story; the plan should reference the basket-edge scenario data it relies on."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "other",
+     "case": "TC-BUG-14-03",
+     "detail": "Tagged sad-path: validation but it tests a regression guard on the committed mark, not input validation; relabel it."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-14-01",
+     "detail": "Steps 2-4 wait for the Enter submit to finish and read Redis before clicking Decrease, but the story says to click Decrease immediately after Enter. State the Decrease click as following Enter directly (as the existing spec does) and move the Redis-5 check out of the pre-click path, or label it as a separate variant."
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "agent": "qe-automation",
+     "cat": "missing-assertion",
+     "case": "TC-BUG-14-02",
+     "detail": "The case requires that the single POST's submitter is the Decrease button, not the quantity-apply submitter. The test only checks the POST count (1) and that no body value equals '5'. It never inspects the submitter, e.g. the button name/value in the POST body."
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "agent": "qe-automation",
+     "cat": "tests-different-path",
+     "case": "TC-BUG-14-05",
+     "detail": "The case requires running basket-cart.spec.ts with exit code 0, every test passing and none skipped as fixme. The test only reads the spec file and asserts the test.fixme marker is gone. It does not confirm the other tests in the file pass."
+    },
+    {
+     "stage": "automation",
+     "round": 3,
+     "agent": "qe-automation",
+     "cat": "missing-assertion",
+     "case": "TC-BUG-14-02",
+     "detail": "The case requires the single POST's submitter to be the Decrease button, not the quantity apply submitter. The test only asserts the posted UpdateQuantityValue is ['4'], which indirectly distinguishes them but does not check the submitter directly."
+    }
+   ],
+   "precheck": [
+    {
+     "stage": "automation",
+     "round": 1,
+     "errors": [
+      "`dotnet` (the commit hook's linter) failed on tests/eShop.AppHost.UnitTests/FlowsBugsTableTests.cs:\n/Users/armando.dollia/code/AI-Immersion-eShop-worktrees/bug-14/tests/eShop.AppHost.UnitTests/FlowsBugsTableTests.cs(1,1): error CHARSET: Fix file encoding. [/Users/armando.dollia/code/AI-Immersion-eShop-worktrees/bug-14/]\n"
+     ]
+    }
+   ],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "verify": "ui",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-7+2",
+     "stories": [
+      "BUG-7",
+      "BUG-8",
+      "BUG-14"
+     ],
+     "round": 1,
+     "score": 8,
+     "raised": 10,
+     "lens": {
+      "acceptance": 8,
+      "flow": 9,
+      "design": 8,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "major",
+       "lens": "acceptance",
+       "title": "TC-BUG-14-06 unit test expects the removed BUG-8 row and fails"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Decrease clicked before the Enter response re-renders still posts a stale value"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Incidental base64url literal and node reference edits not explained in the PR"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Compose-project naming computed twice"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "Repeated POST /cart predicate in bug-14 spec"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "commit() return value undocumented"
+      },
+      {
+       "sev": "major",
+       "lens": "design",
+       "title": "Coverage gap"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-15",
+   "issue": 37,
+   "title": "[BE - Ordering.API] - Creating an order draft without a body returns 500",
+   "svc": "Ordering.API",
+   "status": "blocked",
+   "note": "No agent runs yet"
+  },
+  {
+   "k": "BUG-16",
+   "issue": 38,
+   "title": "[BE - Webhooks.API] - Webhooks.API accepts numeric event names outside the allowed list",
+   "svc": "Webhooks.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/webhooks-event-validation",
+   "pr": 103,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/103",
+   "all": {
+    "runs": 29,
+    "tokens": 6413558,
+    "cost": 6.6476,
+    "sec": 1329
+   },
+   "opus": {
+    "runs": 13,
+    "tokens": 3715509,
+    "cost": 4.5445,
+    "sec": 957
+   },
+   "sonnet": {
+    "runs": 16,
+    "tokens": 2698049,
+    "cost": 2.1031,
+    "sec": 372
+   },
+   "cli": {
+    "copilot": {
+     "runs": 8,
+     "tokens": 2111163,
+     "cost": 1.3693,
+     "sec": 376
+    },
+    "claude": {
+     "runs": 21,
+     "tokens": 4302395,
+     "cost": 5.2783,
+     "sec": 953
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 8,
+     "tokens": 2437837,
+     "cost": 2.7083,
+     "sec": 764
+    },
+    "review": {
+     "runs": 4,
+     "tokens": 415581,
+     "cost": 0.4604,
+     "sec": 48
+    },
+    "plan": {
+     "runs": 6,
+     "tokens": 1182035,
+     "cost": 0.6734,
+     "sec": 128
+    },
+    "plan-verify": {
+     "runs": 1,
+     "tokens": 60071,
+     "cost": 0.1336,
+     "sec": 13
+    },
+    "automation": {
+     "runs": 2,
+     "tokens": 459093,
+     "cost": 0.3482,
+     "sec": 116
+    },
+    "automation-verify": {
+     "runs": 1,
+     "tokens": 171620,
+     "cost": 0.1662,
+     "sec": 28
+    },
+    "pr-check": {
+     "runs": 7,
+     "tokens": 1687321,
+     "cost": 2.1575,
+     "sec": 232
+    }
+   },
+   "bd": {
+    "input": 130434,
+    "output": 55235,
+    "cache_read": 5355107,
+    "cache_write_5m": 253407,
+    "cache_write_1h": 619375
+   },
+   "start": 297,
+   "end": 685.1667,
+   "runs": [
+    [
+     297,
+     31,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3806,
+     351229,
+     "copilot",
+     "implementer"
+    ],
+    [
+     297.5167,
+     223,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3861,
+     656304,
+     "copilot",
+     "implementer"
+    ],
+    [
+     302.1667,
+     12,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.0736,
+     88534,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     302.3667,
+     33,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.1296,
+     186741,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     302.9333,
+     27,
+     "plan",
+     "sonnet",
+     true,
+     2,
+     0.1235,
+     282744,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     303.3833,
+     13,
+     "plan",
+     "sonnet",
+     true,
+     3,
+     0.0843,
+     136541,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     303.6,
+     21,
+     "plan",
+     "sonnet",
+     true,
+     4,
+     0.1095,
+     273825,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     303.9667,
+     16,
+     "plan",
+     "sonnet",
+     true,
+     5,
+     0.0822,
+     135245,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     619.8,
+     31,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3428,
+     225864,
+     "claude",
+     "implementer"
+    ],
+    [
+     620.3167,
+     136,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3032,
+     254141,
+     "claude",
+     "implementer"
+    ],
+    [
+     624.1,
+     10,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1271,
+     108650,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     629.0833,
+     18,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.1443,
+     166939,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     629.3833,
+     13,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.1336,
+     60071,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     664.4333,
+     32,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3463,
+     225716,
+     "claude",
+     "implementer"
+    ],
+    [
+     664.9667,
+     192,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3335,
+     259144,
+     "claude",
+     "implementer"
+    ],
+    [
+     669.4,
+     18,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1395,
+     161700,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     675.5333,
+     24,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.319,
+     171431,
+     "claude",
+     "implementer"
+    ],
+    [
+     675.9333,
+     95,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2968,
+     294008,
+     "claude",
+     "implementer"
+    ],
+    [
+     679.75,
+     8,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1203,
+     56697,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     679.8833,
+     91,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.2154,
+     296915,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     681.4333,
+     25,
+     "automation",
+     "sonnet",
+     true,
+     2,
+     0.1327,
+     162178,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     682.05,
+     28,
+     "automation-verify",
+     "sonnet",
+     true,
+     2,
+     0.1662,
+     171620,
+     "claude",
+     "qe-automation-verifier"
+    ],
+    [
+     682.65,
+     42,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.4022,
+     240739,
+     "claude",
+     "pr-check-acceptance"
+    ],
+    [
+     682.65,
+     33,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.2058,
+     353999,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     682.6667,
+     54,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.4541,
+     366967,
+     "claude",
+     "pr-check-flow"
+    ],
+    [
+     683.55,
+     43,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3401,
+     271176,
+     "claude",
+     "pr-check-defender"
+    ],
+    [
+     684.2833,
+     6,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1154,
+     55650,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     684.2833,
+     20,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.2565,
+     108579,
+     "claude",
+     "pr-check-flow"
+    ],
+    [
+     684.6,
+     34,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3832,
+     290211,
+     "claude",
+     "pr-check-judge"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 6,
+     "tokens": 1162153,
+     "cost": 0.6985,
+     "sec": 130
+    },
+    "opus": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "switch": {
+     "runs": 4,
+     "tokens": 1282808,
+     "cost": 0.9698,
+     "sec": 299
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "Acceptance criteria 'test.fixme removed and webhooks-subscriptions.spec.ts passes' and 'matching row removed from the bugs table in testing/flows/' are not mapped to any case. The plan should add a case or explicit checklist item (e.g. run the named playwright command with the fixme removed; check the bugs table row is gone) rather than declaring them out of scope, since the story has no Test scope section excluding them."
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "agent": "qe-automation",
+     "cat": "tests-different-path",
+     "case": "TC-BUG-16-01",
+     "detail": "The case requires alice, who owns subscriptions 1 and 2 from the webhooks-subscriptions scenario, with a non-trivial count compared before and after. The test uses a fresh alice-{Guid} user with no subscriptions, so the count check compares 0 to 0 and the scenario data is never exercised."
+    }
+   ],
+   "precheck": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "errors": [
+      "`node_modules/.bin/markdownlint` (the commit hook's linter) failed on tests/plans/BUG-16-webhooks-numeric-event-accepted/_index.md, tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-01-numeric-event-rejected.md, tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-02-valid-name-accepted.md, tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-03-defined-numeric-accepted."
+     ]
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "errors": [
+      "tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-01-numeric-event-rejected.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-02-valid-name-accepted.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-03-defined-numeric-accepted.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-04-unknown-name-rejected.md: body must start with a \"# <id>: <title>\" heading."
+     ]
+    },
+    {
+     "stage": "plan",
+     "round": 3,
+     "errors": [
+      "`node_modules/.bin/markdownlint` (the commit hook's linter) failed on tests/plans/BUG-16-webhooks-numeric-event-accepted/_index.md, tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-01-numeric-event-rejected.md, tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-02-valid-name-accepted.md, tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-03-defined-numeric-accepted."
+     ]
+    },
+    {
+     "stage": "plan",
+     "round": 4,
+     "errors": [
+      "tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-01-numeric-event-rejected.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-02-valid-name-accepted.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-03-defined-numeric-accepted.md: body must start with a \"# <id>: <title>\" heading.",
+      "tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-04-unknown-name-rejected.md: body must start with a \"# <id>: <title>\" heading."
+     ]
+    },
+    {
+     "stage": "plan",
+     "round": 5,
+     "errors": [
+      "`node_modules/.bin/markdownlint` (the commit hook's linter) failed on tests/plans/BUG-16-webhooks-numeric-event-accepted/_index.md, tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-01-numeric-event-rejected.md, tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-02-valid-name-accepted.md, tests/plans/BUG-16-webhooks-numeric-event-accepted/TC-BUG-16-03-defined-numeric-accepted."
+     ]
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "errors": [
+      "`dotnet` (the commit hook's linter) failed on tests/Webhooks.FunctionalTests/WebhookEventValidationTests.cs:\n/Users/armando.dollia/code/AI-Immersion-eShop-worktrees/bug-16/tests/Webhooks.FunctionalTests/WebhookEventValidationTests.cs(1,1): error CHARSET: Fix file encoding. [/Users/armando.dollia/code/AI-Immersion-eShop-worktrees/bug-16/]\n"
+     ]
+    }
+   ],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    },
+    {
+     "id": "self",
+     "impl": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "claude",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": null
+      }
+     ]
+    },
+    {
+     "id": "self",
+     "impl": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "claude",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": null
+      }
+     ]
+    },
+    {
+     "id": "self",
+     "impl": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "claude",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": null
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-16",
+     "stories": [
+      "BUG-16"
+     ],
+     "round": 1,
+     "score": 10,
+     "raised": 2,
+     "lens": {
+      "acceptance": 10,
+      "flow": 10,
+      "style": 10
+     },
+     "upheld": []
+    }
+   ]
+  },
+  {
+   "k": "BUG-17",
+   "issue": 39,
+   "title": "[BE - Catalog.API] - Creating a catalog item without a name returns 500",
+   "svc": "Catalog.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/catalog-item-validation",
+   "pr": 100,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/100",
+   "all": {
+    "runs": 21,
+    "tokens": 5955052,
+    "cost": 5.583,
+    "sec": 2409
+   },
+   "opus": {
+    "runs": 9,
+    "tokens": 3345463,
+    "cost": 4.0327,
+    "sec": 624
+   },
+   "sonnet": {
+    "runs": 12,
+    "tokens": 2609589,
+    "cost": 1.5503,
+    "sec": 1785
+   },
+   "cli": {
+    "copilot": {
+     "runs": 12,
+     "tokens": 3606371,
+     "cost": 2.0548,
+     "sec": 2044
+    },
+    "claude": {
+     "runs": 9,
+     "tokens": 2348681,
+     "cost": 3.5283,
+     "sec": 365
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 3,
+     "tokens": 1556551,
+     "cost": 1.0486,
+     "sec": 322
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 138225,
+     "cost": 0.0892,
+     "sec": 13
+    },
+    "plan": {
+     "runs": 1,
+     "tokens": 335307,
+     "cost": 0.1836,
+     "sec": 51
+    },
+    "plan-verify": {
+     "runs": 1,
+     "tokens": 46147,
+     "cost": 0.0759,
+     "sec": 14
+    },
+    "automation": {
+     "runs": 3,
+     "tokens": 1344351,
+     "cost": 0.489,
+     "sec": 504
+    },
+    "automation-verify": {
+     "runs": 3,
+     "tokens": 185790,
+     "cost": 0.1685,
+     "sec": 1140
+    },
+    "pr-check": {
+     "runs": 9,
+     "tokens": 2348681,
+     "cost": 3.5283,
+     "sec": 365
+    }
+   },
+   "bd": {
+    "input": 94020,
+    "output": 65192,
+    "cache_read": 5093420,
+    "cache_write_5m": 351270,
+    "cache_write_1h": 351150
+   },
+   "start": 371.3833,
+   "end": 640.45,
+   "runs": [
+    [
+     371.3833,
+     32,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3096,
+     357470,
+     "copilot",
+     "implementer"
+    ],
+    [
+     371.9167,
+     207,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4073,
+     681107,
+     "copilot",
+     "implementer"
+    ],
+    [
+     377.7667,
+     83,
+     "implement",
+     "opus",
+     true,
+     2,
+     0.3318,
+     517974,
+     "copilot",
+     "implementer"
+    ],
+    [
+     380.95,
+     13,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.0892,
+     138225,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     381.1667,
+     51,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.1836,
+     335307,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     382.0333,
+     14,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.0759,
+     46147,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     382.2667,
+     88,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.1971,
+     511209,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     383.7667,
+     24,
+     "automation",
+     "sonnet",
+     true,
+     2,
+     0.1114,
+     353690,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     384.55,
+     18,
+     "automation-verify",
+     "sonnet",
+     true,
+     2,
+     0.096,
+     140202,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     384.85,
+     392,
+     "automation",
+     "sonnet",
+     true,
+     3,
+     0.1805,
+     479452,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     392.5667,
+     1100,
+     "automation-verify",
+     "sonnet",
+     false,
+     3,
+     0,
+     0,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     410.9167,
+     22,
+     "automation-verify",
+     "sonnet",
+     true,
+     3,
+     0.0725,
+     45588,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     636.4833,
+     45,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.2372,
+     424773,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     636.4833,
+     71,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.6465,
+     490344,
+     "claude",
+     "pr-check-acceptance"
+    ],
+    [
+     636.4833,
+     75,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.6254,
+     417095,
+     "claude",
+     "pr-check-flow"
+    ],
+    [
+     637.7333,
+     56,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.5021,
+     271088,
+     "claude",
+     "pr-check-defender"
+    ],
+    [
+     638.6667,
+     30,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3692,
+     133477,
+     "claude",
+     "pr-check-flow"
+    ],
+    [
+     638.6833,
+     11,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1572,
+     68072,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     639.1667,
+     12,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.3141,
+     71891,
+     "claude",
+     "pr-check-defender"
+    ],
+    [
+     639.3667,
+     7,
+     "pr-check",
+     "sonnet",
+     true,
+     1,
+     0.1498,
+     66924,
+     "claude",
+     "pr-check-style"
+    ],
+    [
+     639.4833,
+     58,
+     "pr-check",
+     "opus",
+     true,
+     1,
+     0.5269,
+     405017,
+     "claude",
+     "pr-check-judge"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 4,
+     "tokens": 1018932,
+     "cost": 0.4604,
+     "sec": 456
+    },
+    "opus": {
+     "runs": 1,
+     "tokens": 517974,
+     "cost": 0.3318,
+     "sec": 83
+    },
+    "switch": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "failed": {
+     "runs": 1,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 1100
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "score": 8,
+     "passed": false,
+     "gaps": 2
+    },
+    {
+     "stage": "automation",
+     "round": 3,
+     "score": 10,
+     "passed": true,
+     "gaps": 0
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "The acceptance criteria say the fixme-removed test and the rest of catalog-admin.spec.ts pass, and that the bugs-table row in testing/flows/ is removed. The plan excludes these as housekeeping and has no case that runs the whole spec file or checks the row is gone. Add a case, or an explicit verification item, tied to those acceptance criteria."
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "agent": "qe-automation",
+     "cat": "tests-different-path",
+     "case": "TC-BUG-17-04",
+     "detail": "The case body has no id, but the test adds \"id\":17004, so the default id-generation path is not exercised."
+    },
+    {
+     "stage": "automation",
+     "round": 2,
+     "agent": "qe-automation",
+     "cat": "tests-different-path",
+     "case": "TC-BUG-17-01",
+     "detail": "The tests use an in-process WebApplicationFactory with a fresh Postgres and a test-auth middleware, so the catalog-edge scenario and a real admin bearer token are not used, unlike the cases' preconditions."
+    }
+   ],
+   "precheck": [
+    {
+     "stage": "automation",
+     "round": 1,
+     "errors": [
+      "`dotnet` (the commit hook's linter) failed on tests/Catalog.FunctionalTests/CatalogCreateWithoutNameTests.cs:\n/Users/armando.dollia/code/AI-Immersion-eShop-worktrees/bug-17/tests/Catalog.FunctionalTests/CatalogCreateWithoutNameTests.cs(1,1): error CHARSET: Fix file encoding. [/Users/armando.dollia/code/AI-Immersion-eShop-worktrees/bug-17/]\n"
+     ]
+    }
+   ],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "CHANGES_REQUESTED",
+       "diag": {
+        "errors": 30,
+        "warnings": 0
+       }
+      },
+      {
+       "round": 2,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-17+5",
+     "stories": [
+      "BUG-17",
+      "BUG-13",
+      "BUG-19",
+      "BUG-18",
+      "BUG-20",
+      "BUG-21"
+     ],
+     "round": 1,
+     "score": 6,
+     "raised": 9,
+     "lens": {
+      "acceptance": 6,
+      "flow": 9,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "blocking",
+       "lens": "acceptance",
+       "title": "BUG-13 catalog-admin test is still test.fixme"
+      },
+      {
+       "sev": "minor",
+       "lens": "acceptance",
+       "title": "Flows doc still lists duplicate id as an open bug"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Repeating a negative id on create still returns 500"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "409 response content type in the generated Catalog.API.json is application/json instead of application/problem+json"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-18",
+   "issue": 40,
+   "title": "[BE - Catalog.API] - Creating a catalog item with an existing id returns 500",
+   "svc": "Catalog.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/catalog-item-validation",
+   "pr": 100,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/100",
+   "all": {
+    "runs": 11,
+    "tokens": 3776712,
+    "cost": 3.1121,
+    "sec": 1360
+   },
+   "opus": {
+    "runs": 6,
+    "tokens": 2485044,
+    "cost": 2.209,
+    "sec": 545
+   },
+   "sonnet": {
+    "runs": 5,
+    "tokens": 1291668,
+    "cost": 0.9031,
+    "sec": 815
+   },
+   "cli": {
+    "copilot": {
+     "runs": 3,
+     "tokens": 1845951,
+     "cost": 1.2095,
+     "sec": 208
+    },
+    "claude": {
+     "runs": 8,
+     "tokens": 1930761,
+     "cost": 1.9026,
+     "sec": 1152
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 6,
+     "tokens": 2485044,
+     "cost": 2.209,
+     "sec": 545
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 158830,
+     "cost": 0.1333,
+     "sec": 24
+    },
+    "plan": {
+     "runs": 1,
+     "tokens": 176830,
+     "cost": 0.1949,
+     "sec": 45
+    },
+    "plan-verify": {
+     "runs": 1,
+     "tokens": 41237,
+     "cost": 0.118,
+     "sec": 12
+    },
+    "automation": {
+     "runs": 1,
+     "tokens": 833973,
+     "cost": 0.3365,
+     "sec": 719
+    },
+    "automation-verify": {
+     "runs": 1,
+     "tokens": 80798,
+     "cost": 0.1204,
+     "sec": 15
+    }
+   },
+   "bd": {
+    "input": 13003,
+    "output": 30994,
+    "cache_read": 3341677,
+    "cache_write_5m": 134265,
+    "cache_write_1h": 256773
+   },
+   "start": 534.85,
+   "end": 597.8333,
+   "runs": [
+    [
+     534.85,
+     33,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3972,
+     405445,
+     "copilot",
+     "implementer"
+    ],
+    [
+     535.4,
+     81,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.341,
+     514071,
+     "copilot",
+     "implementer"
+    ],
+    [
+     539.2833,
+     94,
+     "implement",
+     "opus",
+     true,
+     2,
+     0.4713,
+     926435,
+     "copilot",
+     "implementer"
+    ],
+    [
+     572.2833,
+     27,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2756,
+     118610,
+     "claude",
+     "implementer"
+    ],
+    [
+     572.7333,
+     276,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3286,
+     254666,
+     "claude",
+     "implementer"
+    ],
+    [
+     579.3833,
+     24,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1333,
+     158830,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     579.8,
+     45,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.1949,
+     176830,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     580.55,
+     12,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.118,
+     41237,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     580.75,
+     719,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.3365,
+     833973,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     587.4667,
+     34,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.3954,
+     265817,
+     "claude",
+     "implementer"
+    ],
+    [
+     597.5833,
+     15,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.1204,
+     80798,
+     "claude",
+     "qe-automation-verifier"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "opus": {
+     "runs": 1,
+     "tokens": 926435,
+     "cost": 0.4713,
+     "sec": 94
+    },
+    "switch": {
+     "runs": 2,
+     "tokens": 919516,
+     "cost": 0.7381,
+     "sec": 114
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 10,
+     "passed": true,
+     "gaps": 0
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "The story's acceptance criteria require the un-fixme'd spec and the rest of catalog-admin.spec.ts to pass, and the bugs-table row in testing/flows/ to be removed. The plan declares these out of scope without a story Test scope section. Map them to a case, or at least a regression case or checklist item, for running the full spec file and verifying the row is gone."
+    }
+   ],
+   "precheck": [],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "CHANGES_REQUESTED",
+       "diag": {
+        "errors": 30,
+        "warnings": 0
+       }
+      },
+      {
+       "round": 2,
+       "verdict": "VERIFIER_ERROR",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      },
+      {
+       "round": 3,
+       "verdict": "VERIFIER_ERROR",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    },
+    {
+     "id": "self",
+     "impl": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "claude",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-17+5",
+     "stories": [
+      "BUG-17",
+      "BUG-13",
+      "BUG-19",
+      "BUG-18",
+      "BUG-20",
+      "BUG-21"
+     ],
+     "round": 1,
+     "score": 6,
+     "raised": 9,
+     "lens": {
+      "acceptance": 6,
+      "flow": 9,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "blocking",
+       "lens": "acceptance",
+       "title": "BUG-13 catalog-admin test is still test.fixme"
+      },
+      {
+       "sev": "minor",
+       "lens": "acceptance",
+       "title": "Flows doc still lists duplicate id as an open bug"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Repeating a negative id on create still returns 500"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "409 response content type in the generated Catalog.API.json is application/json instead of application/problem+json"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-19",
+   "issue": 41,
+   "title": "[BE - Catalog.API] - Unknown brand or type ids on create or update return 500",
+   "svc": "Catalog.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/catalog-item-validation",
+   "pr": 100,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/100",
+   "all": {
+    "runs": 11,
+    "tokens": 3809042,
+    "cost": 2.516,
+    "sec": 1199
+   },
+   "opus": {
+    "runs": 2,
+    "tokens": 1231217,
+    "cost": 0.9252,
+    "sec": 205
+   },
+   "sonnet": {
+    "runs": 9,
+    "tokens": 2577825,
+    "cost": 1.5908,
+    "sec": 994
+   },
+   "cli": {
+    "copilot": {
+     "runs": 9,
+     "tokens": 3181218,
+     "cost": 2.0881,
+     "sec": 801
+    },
+    "claude": {
+     "runs": 2,
+     "tokens": 627824,
+     "cost": 0.4278,
+     "sec": 398
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 2,
+     "tokens": 1231217,
+     "cost": 0.9252,
+     "sec": 205
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 137279,
+     "cost": 0.0866,
+     "sec": 12
+    },
+    "plan": {
+     "runs": 2,
+     "tokens": 732056,
+     "cost": 0.4936,
+     "sec": 145
+    },
+    "plan-verify": {
+     "runs": 2,
+     "tokens": 101796,
+     "cost": 0.1777,
+     "sec": 31
+    },
+    "automation": {
+     "runs": 2,
+     "tokens": 1399076,
+     "cost": 0.5153,
+     "sec": 775
+    },
+    "automation-verify": {
+     "runs": 2,
+     "tokens": 207618,
+     "cost": 0.3175,
+     "sec": 31
+    }
+   },
+   "bd": {
+    "input": 22524,
+    "output": 46488,
+    "cache_read": 3300368,
+    "cache_write_5m": 363494,
+    "cache_write_1h": 76168
+   },
+   "start": 518.8667,
+   "end": 660.7667,
+   "runs": [
+    [
+     518.8667,
+     37,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4627,
+     427571,
+     "copilot",
+     "implementer"
+    ],
+    [
+     519.4833,
+     168,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4626,
+     803646,
+     "copilot",
+     "implementer"
+    ],
+    [
+     523.3833,
+     12,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.0866,
+     137279,
+     "copilot",
+     "architecture-reviewer"
+    ],
+    [
+     523.6,
+     114,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.366,
+     497275,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     525.5,
+     17,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.0881,
+     50185,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     525.7667,
+     31,
+     "plan",
+     "sonnet",
+     true,
+     2,
+     0.1277,
+     234781,
+     "copilot",
+     "qe-plan"
+    ],
+    [
+     526.2833,
+     14,
+     "plan-verify",
+     "sonnet",
+     true,
+     2,
+     0.0896,
+     51611,
+     "copilot",
+     "qe-plan-verifier"
+    ],
+    [
+     526.5333,
+     393,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.3005,
+     920783,
+     "copilot",
+     "qe-automation"
+    ],
+    [
+     534.4,
+     15,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.1045,
+     58087,
+     "copilot",
+     "qe-automation-verifier"
+    ],
+    [
+     652.6333,
+     382,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.2148,
+     478293,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     660.5,
+     16,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.213,
+     149531,
+     "claude",
+     "qe-automation-verifier"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 2,
+     "tokens": 286392,
+     "cost": 0.2173,
+     "sec": 45
+    },
+    "opus": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "switch": {
+     "runs": 2,
+     "tokens": 978870,
+     "cost": 0.405,
+     "sec": 408
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 8,
+     "passed": false,
+     "gaps": 3
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "score": 9,
+     "passed": true,
+     "gaps": 2
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 10,
+     "passed": true,
+     "gaps": 0
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "invented-requirement",
+     "case": "TC-BUG-19-10",
+     "detail": "Asserts 201 for v2 PUT success although the story does not state it and the plan's own open questions say it is taken from code. Assert only success (2xx) and persisted values."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "Acceptance criteria to remove test.fixme and make the spec file pass, and to remove the bugs-table row in testing/flows/, are excluded as housekeeping without a story Test scope. Plan should map them to a verification step or case."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "missing-sad-path",
+     "case": null,
+     "detail": "No v1 PUT case with an unknown type id, and no case showing the reference check runs before item lookup (PUT to a nonexistent item id with unknown brand returns 400)."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-19-05",
+     "detail": "Asserts a count of 14 items and brand 4/type 4 unused, which come from the catalog-edge scenario, not the story; the plan should cite the scenario file or compare counts relative to before instead of a hard-coded number."
+    },
+    {
+     "stage": "plan",
+     "round": 2,
+     "agent": "qe-plan",
+     "cat": "vague-steps",
+     "case": "TC-BUG-19-13",
+     "detail": "Precondition says to remove the fixme marker 'if marked' for the second test; it should state exactly which markers must be removed."
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "agent": "qe-automation",
+     "cat": "missing-assertion",
+     "case": "TC-BUG-19-13",
+     "detail": "The case's step 2 requires the BUG-19 row in the testing/flows bugs table to be gone. No test or automated check asserts it."
+    }
+   ],
+   "precheck": [],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "copilot",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "copilot",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-17+5",
+     "stories": [
+      "BUG-17",
+      "BUG-13",
+      "BUG-19",
+      "BUG-18",
+      "BUG-20",
+      "BUG-21"
+     ],
+     "round": 1,
+     "score": 6,
+     "raised": 9,
+     "lens": {
+      "acceptance": 6,
+      "flow": 9,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "blocking",
+       "lens": "acceptance",
+       "title": "BUG-13 catalog-admin test is still test.fixme"
+      },
+      {
+       "sev": "minor",
+       "lens": "acceptance",
+       "title": "Flows doc still lists duplicate id as an open bug"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Repeating a negative id on create still returns 500"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "409 response content type in the generated Catalog.API.json is application/json instead of application/problem+json"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-20",
+   "issue": 43,
+   "title": "[BE - Catalog.API] - v2 PUT with a body id different from the route id returns 500",
+   "svc": "Catalog.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/catalog-item-validation",
+   "pr": 100,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/100",
+   "all": {
+    "runs": 8,
+    "tokens": 2534166,
+    "cost": 2.1094,
+    "sec": 684
+   },
+   "opus": {
+    "runs": 3,
+    "tokens": 1600042,
+    "cost": 1.2722,
+    "sec": 331
+   },
+   "sonnet": {
+    "runs": 5,
+    "tokens": 934124,
+    "cost": 0.8372,
+    "sec": 353
+   },
+   "cli": {
+    "claude": {
+     "runs": 8,
+     "tokens": 2534166,
+     "cost": 2.1094,
+     "sec": 684
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 3,
+     "tokens": 1600042,
+     "cost": 1.2722,
+     "sec": 331
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 160427,
+     "cost": 0.1332,
+     "sec": 17
+    },
+    "plan": {
+     "runs": 1,
+     "tokens": 294463,
+     "cost": 0.2293,
+     "sec": 54
+    },
+    "plan-verify": {
+     "runs": 1,
+     "tokens": 115979,
+     "cost": 0.1414,
+     "sec": 17
+    },
+    "automation": {
+     "runs": 1,
+     "tokens": 301525,
+     "cost": 0.2117,
+     "sec": 254
+    },
+    "automation-verify": {
+     "runs": 1,
+     "tokens": 61730,
+     "cost": 0.1216,
+     "sec": 11
+    }
+   },
+   "bd": {
+    "input": 60708,
+    "output": 24503,
+    "cache_read": 2195430,
+    "cache_write_5m": 0,
+    "cache_write_1h": 253525
+   },
+   "start": 598.4333,
+   "end": 616.95,
+   "runs": [
+    [
+     598.4333,
+     32,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2961,
+     170667,
+     "claude",
+     "implementer"
+    ],
+    [
+     598.9833,
+     169,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.4126,
+     518203,
+     "claude",
+     "implementer"
+    ],
+    [
+     604.6667,
+     130,
+     "implement",
+     "opus",
+     true,
+     2,
+     0.5635,
+     911172,
+     "claude",
+     "implementer"
+    ],
+    [
+     608.1333,
+     17,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1332,
+     160427,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     608.4333,
+     54,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.2293,
+     294463,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     609.3333,
+     17,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.1414,
+     115979,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     609.6333,
+     254,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.2117,
+     301525,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     616.7667,
+     11,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.1216,
+     61730,
+     "claude",
+     "qe-automation-verifier"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "opus": {
+     "runs": 1,
+     "tokens": 911172,
+     "cost": 0.5635,
+     "sec": 130
+    },
+    "switch": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 10,
+     "passed": true,
+     "gaps": 0
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "Acceptance criteria for removing test.fixme with the rest of catalog-admin.spec.ts still passing, and for removing the bugs-table row in testing/flows/, are excluded as out of scope although the story has no Test scope section. Map the un-fixme/full-file-pass criterion explicitly to TC-BUG-20-01 (and the other cases), or record it as a checklist item rather than an exclusion."
+    }
+   ],
+   "precheck": [],
+   "subtasks": [
+    {
+     "id": "self",
+     "impl": {
+      "cli": "claude",
+      "model": "opus"
+     },
+     "ver": {
+      "cli": "claude",
+      "model": "sonnet"
+     },
+     "verify": "code",
+     "rounds": [
+      {
+       "round": 1,
+       "verdict": "CHANGES_REQUESTED",
+       "diag": {
+        "errors": 30,
+        "warnings": 0
+       }
+      },
+      {
+       "round": 2,
+       "verdict": "APPROVED",
+       "diag": {
+        "errors": 0,
+        "warnings": 0
+       }
+      }
+     ]
+    }
+   ],
+   "prcheck": [
+    {
+     "target": "BUG-17+5",
+     "stories": [
+      "BUG-17",
+      "BUG-13",
+      "BUG-19",
+      "BUG-18",
+      "BUG-20",
+      "BUG-21"
+     ],
+     "round": 1,
+     "score": 6,
+     "raised": 9,
+     "lens": {
+      "acceptance": 6,
+      "flow": 9,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "blocking",
+       "lens": "acceptance",
+       "title": "BUG-13 catalog-admin test is still test.fixme"
+      },
+      {
+       "sev": "minor",
+       "lens": "acceptance",
+       "title": "Flows doc still lists duplicate id as an open bug"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Repeating a negative id on create still returns 500"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "409 response content type in the generated Catalog.API.json is application/json instead of application/problem+json"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "k": "BUG-21",
+   "issue": 44,
+   "title": "[BE - Catalog.API] - v1 PUT without an id returns 404 instead of 400",
+   "svc": "Catalog.API",
+   "status": "verified",
+   "branch": "bugfix/teststack-bug-findings/catalog-item-validation",
+   "pr": 100,
+   "prUrl": "https://github.com/armandodollia-slalom/AI-Immersion-eShop/pull/100",
+   "all": {
+    "runs": 7,
+    "tokens": 2264254,
+    "cost": 1.8838,
+    "sec": 822
+   },
+   "opus": {
+    "runs": 2,
+    "tokens": 854022,
+    "cost": 0.9046,
+    "sec": 168
+   },
+   "sonnet": {
+    "runs": 5,
+    "tokens": 1410232,
+    "cost": 0.9792,
+    "sec": 654
+   },
+   "cli": {
+    "claude": {
+     "runs": 7,
+     "tokens": 2264254,
+     "cost": 1.8838,
+     "sec": 822
+    }
+   },
+   "stages": {
+    "implement": {
+     "runs": 2,
+     "tokens": 854022,
+     "cost": 0.9046,
+     "sec": 168
+    },
+    "review": {
+     "runs": 1,
+     "tokens": 159709,
+     "cost": 0.1355,
+     "sec": 11
+    },
+    "plan": {
+     "runs": 1,
+     "tokens": 237561,
+     "cost": 0.2195,
+     "sec": 51
+    },
+    "plan-verify": {
+     "runs": 1,
+     "tokens": 63230,
+     "cost": 0.1436,
+     "sec": 15
+    },
+    "automation": {
+     "runs": 1,
+     "tokens": 774184,
+     "cost": 0.3118,
+     "sec": 556
+    },
+    "automation-verify": {
+     "runs": 1,
+     "tokens": 175548,
+     "cost": 0.1689,
+     "sec": 21
+    }
+   },
+   "bd": {
+    "input": 54802,
+    "output": 22092,
+    "cache_read": 1950248,
+    "cache_write_5m": 0,
+    "cache_write_1h": 237112
+   },
+   "start": 617.2667,
+   "end": 634.0333,
+   "runs": [
+    [
+     617.2667,
+     27,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.2979,
+     171210,
+     "claude",
+     "implementer"
+    ],
+    [
+     618.8,
+     141,
+     "implement",
+     "opus",
+     true,
+     1,
+     0.6067,
+     682812,
+     "claude",
+     "implementer"
+    ],
+    [
+     621.2667,
+     11,
+     "review",
+     "sonnet",
+     true,
+     1,
+     0.1355,
+     159709,
+     "claude",
+     "architecture-reviewer"
+    ],
+    [
+     621.4667,
+     51,
+     "plan",
+     "sonnet",
+     true,
+     1,
+     0.2195,
+     237561,
+     "claude",
+     "qe-plan"
+    ],
+    [
+     622.3167,
+     15,
+     "plan-verify",
+     "sonnet",
+     true,
+     1,
+     0.1436,
+     63230,
+     "claude",
+     "qe-plan-verifier"
+    ],
+    [
+     622.5667,
+     556,
+     "automation",
+     "sonnet",
+     true,
+     1,
+     0.3118,
+     774184,
+     "claude",
+     "qe-automation"
+    ],
+    [
+     633.6833,
+     21,
+     "automation-verify",
+     "sonnet",
+     true,
+     1,
+     0.1689,
+     175548,
+     "claude",
+     "qe-automation-verifier"
+    ]
+   ],
+   "waste": {
+    "sonnet": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "opus": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "switch": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    },
+    "failed": {
+     "runs": 0,
+     "tokens": 0,
+     "cost": 0,
+     "sec": 0
+    }
+   },
+   "verifiers": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 2
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "score": 9,
+     "passed": true,
+     "gaps": 1
+    }
+   ],
+   "denials": [
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "invented-requirement",
+     "case": "TC-BUG-21-01",
+     "detail": "Asserts content type application/problem+json, which the story does not state; assert only status 400 and the message text (detail)."
+    },
+    {
+     "stage": "plan",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "ac-not-covered",
+     "case": null,
+     "detail": "The AC that the fixme'd spec passes and the rest of catalog-admin.spec.ts still passes is only implied via the out-of-scope note; the plan should state that the automated spec for TC-BUG-21-01 plus the unchanged remaining tests in that file satisfy this AC, or map it explicitly."
+    },
+    {
+     "stage": "automation",
+     "round": 1,
+     "agent": "qe-plan",
+     "cat": "other",
+     "case": "TC-BUG-21-01",
+     "detail": "Case expects content type application/problem+json, but the handler returns TypedResults.BadRequest<ProblemDetails>, which serializes as application/json; the test accepts either type, so it does not match the case literally. The case text should be corrected."
+    }
+   ],
+   "precheck": [],
+   "subtasks": [],
+   "prcheck": [
+    {
+     "target": "BUG-17+5",
+     "stories": [
+      "BUG-17",
+      "BUG-13",
+      "BUG-19",
+      "BUG-18",
+      "BUG-20",
+      "BUG-21"
+     ],
+     "round": 1,
+     "score": 6,
+     "raised": 9,
+     "lens": {
+      "acceptance": 6,
+      "flow": 9,
+      "style": 9
+     },
+     "upheld": [
+      {
+       "sev": "blocking",
+       "lens": "acceptance",
+       "title": "BUG-13 catalog-admin test is still test.fixme"
+      },
+      {
+       "sev": "minor",
+       "lens": "acceptance",
+       "title": "Flows doc still lists duplicate id as an open bug"
+      },
+      {
+       "sev": "minor",
+       "lens": "flow",
+       "title": "Repeating a negative id on create still returns 500"
+      },
+      {
+       "sev": "minor",
+       "lens": "style",
+       "title": "409 response content type in the generated Catalog.API.json is application/json instead of application/problem+json"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "kind": "epic"
+}
